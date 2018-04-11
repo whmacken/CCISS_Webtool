@@ -1,0 +1,245 @@
+"","SiteNo","Unit","Standard","SSName","Primary","Preferred","Secondary","Acceptable","Tertiary","StockingTarget","StockingMINpa","StockingMINp","StockingDelay","AssessmentEarliest","AssessmentLatest","H1","H2","H3","H4","H5"
+"247","4","SBSdw2/01","80203","SxwFd - Pinegrass","Fd( 32,) ,Pl,Sx","Fd( 32,) ,Pl,Sx","","","At(901,) ,Ep(901,) ,Lw",1200,700,600,7,12,15,"Sxw: 1","Fd: 1.4","Pl: 2",NA,NA
+"1","4","SBSdw2/01","ClimateChange",NA,"Fd,Pl",NA,"Sx",NA,"At,Bl,Lw",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"245","4","SBSdw2/02","80204","FdPl - Cladonia","Fd( 28,) ,Pl","Fd( 28,) ,Pl","","","",1000,500,400,7,12,15,"Fd: 1","Pl: 1.4",NA,NA,NA
+"11","4","SBSdw2/02","ClimateChange",NA,"Fd",NA,"Pl",NA,"",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"248","4","SBSdw2/03","80205","Pl - Kinnikinnick - Wavy-leaved moss","Fd( 28,32) ,Pl","Fd( 28,32) ,Pl","","","At(901,) ",1200,700,600,7,12,15,"Fd: 1.4","Pl: 2",NA,NA,NA
+"12","4","SBSdw2/03","ClimateChange",NA,"Fd",NA,"Pl",NA,"",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"249","4","SBSdw2/04","80206","Fd - Pinegrass - Aster","Fd( 27,) ,Pl","Fd( 27,) ,Pl","","","At(901,) ",1200,700,600,7,12,15,"Fd: 1.4","Pl: 2",NA,NA,NA
+"13","4","SBSdw2/04","ClimateChange",NA,"Fd",NA,"Pl",NA,"",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"250","4","SBSdw2/05","80207","SxwFd - Cat's-tail moss","Fd,Pl,Sx","Fd,Pl,Sx","","","At(900,) ,Ep( 28,901) ",1200,700,600,7,12,15,"Sxw: 1","Fd: 1.4","Pl: 2",NA,NA
+"14","4","SBSdw2/05","ClimateChange",NA,"Fd",NA,"Pl,Sx",NA,"",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"251","4","SBSdw2/06","80208","Pl - Pinegrass - Feathermoss","Fd( 32,) ,Pl,Sx( 28,) ","Fd( 32,) ,Pl,Sx( 28,) ","","","At(901,) ,Ep(901,) ,Lw",1200,700,600,7,12,15,"Sxw: 1","Fd: 1.4","Pl: 2",NA,NA
+"15","4","SBSdw2/06","ClimateChange",NA,"Fd",NA,"Pl,Sx",NA,"Lw",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"252","4","SBSdw2/07","80209","PlSb - Feathermoss","Pl","Pl,Sx","","Sb","At(901,) ,Sx",1200,700,600,7,12,15,"Sb: 0.8","Sxw: 1","Pl: 2",NA,NA
+"16","4","SBSdw2/07","ClimateChange",NA,"",NA,"Fd,Pl",NA,"Sx",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"253","4","SBSdw2/08","80210","Sxw - Twinberry","Sx","Fd(  1,32) ,Pl,Sx","Bl,Fd(  1,32) ,Pl","Bl","Act(901,) ,At(901,) ,Ep(901,) ,Lw",1200,700,600,4,9,15,"Others: 1","Fd: 1.4","Pl: 2",NA,NA
+"17","4","SBSdw2/08","ClimateChange",NA,"Sx",NA,"Bl,Fd,Pl",NA,"Act",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"254","4","SBSdw2/09","80211","Sxw - Devil's club - Knight's plume","Fd,Pl,Sx","Fd,Pl,Sx","Bl","Bl","Act(901,) ,At(901,) ,Ep(901,) ",1200,700,600,4,9,15,"Others: 1","Fd: 1.4","Pl: 2",NA,NA
+"18","4","SBSdw2/09","ClimateChange",NA,"Sx",NA,"Bl,Fd",NA,"Act,Pl",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"246","4","SBSdw2/10","80212","Sxw - Horsetail","Sx(  1,32) ","Sx(  1,32) ","Bl(  1,32) ,Pl(  1,) ","Bl(  1,32) ,Pl(  1,) ","Act(901,) ",1000,500,400,4,9,15,"Others: 0.8","Pl: 1.4",NA,NA,NA
+"19","4","SBSdw2/10","ClimateChange",NA,"Sx",NA,"Bl",NA,"Act",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"244","4","SBSdw2/11","80213","Sb - Soft-leaved sedge - Sphagnum","Sx(  1,32) ","Sx(  1,32) ,Pl(  1,) ","Pl(  1,) ","Sb(  1,) ","Sb(  1,) ",400,200,200,4,9,15,"Others: 0.8","Pl: 1.4",NA,NA,NA
+"110","4","SBSdw2/11","ClimateChange",NA,"Sx",NA,"",NA,"Bl",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"1031","5","SBSmk1/01","81240","Sxw - Huckleberry - Highbush-cranberry","Pl,Sx","Pl,Sx,Fd(  3,32) ","Bl( 29,) ,Fd(  3,32) ","Bl( 29,) ","At(901,) ,Ep(901,) ,Lw",1200,700,600,7,12,15,"Others: 1","Fd: 1.4","Pl: 2",NA,NA
+"111","5","SBSmk1/01","ClimateChange",NA,"Pl,Sx",NA,"Bl,Fd",NA,"At,Ep",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"1032","5","SBSmk1/02","81241","Pl - Cladina - Step moss","Pl","Pl","","Sx( 28,) ","At(901,) ,Sx( 28,) ",1200,700,600,7,12,15,"Sxw: 1","Pl: 2",NA,NA,NA
+"112","5","SBSmk1/02","ClimateChange",NA,"Pl",NA,"",NA,"Sx",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"1033","5","SBSmk1/03","81242","Pl - Feathermoss - Cladina","Pl","Pl","","Sx","At(901,) ,Sx",1200,700,600,7,12,15,"Sxw: 1","Pl: 2",NA,NA,NA
+"121","5","SBSmk1/03","ClimateChange",NA,"Pl",NA,"",NA,"Sx",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"1034","5","SBSmk1/04","81243","SxwFd - Knight's plume","Fd,Pl","Fd,Pl","","Bl( 28,29) ,Sx( 28,) ","At(901,) ,Bl( 28,29) ,Ep(901,) ,Sx( 28,) ",1200,700,600,7,12,15,"Others: 1","Fd: 1.4","Pl: 2",NA,NA
+"131","5","SBSmk1/04","ClimateChange",NA,"Pl",NA,"Fd",NA,"At,Bl,Sx",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"1035","5","SBSmk1/05","81244","SxwFd - Toad-flax","Pl,Sx","Pl,Sx,Fd(  3,32) ","Fd(  3,32) ","Bl( 29,) ","At(901,) ,Bl( 29,) ,Ep(901,) ,Lw",1200,700,600,7,12,15,"Others: 1","Fd: 1.4","Pl: 2",NA,NA
+"141","5","SBSmk1/05","ClimateChange",NA,"Pl,Sx",NA,"Fd",NA,"At,Bl,Ep",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"1036","5","SBSmk1/06","81245","Sb - Huckleberry - Spirea","Pl","Pl","","Sb,Sx( 32,) ","At(901,) ,Sb,Sx( 32,) ",1200,700,600,7,12,15,"Others: 1","Pl: 2",NA,NA,NA
+"151","5","SBSmk1/06","ClimateChange",NA,"Pl",NA,"Sx",NA,"At,Bl,Fd",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"1037","5","SBSmk1/07","81246","Sxw - Oak fern","Pl,Sx","Pl,Sx,Fd(  3,8, 32) ","Bl( 29,) ,Fd(  3,8, 32) ","Bl( 29,) ","Act(901,) ,At(901,) ,Ep(901,) ,Lw",1200,700,600,4,9,15,"Others: 1","Fd: 1.4","Pl: 2",NA,NA
+"161","5","SBSmk1/07","ClimateChange",NA,"Pl,Sx",NA,"Bl,Fd",NA,"At,Ep",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"1038","5","SBSmk1/08","81247","Sxw - Devil's club","Sx( 32,) ","Sx( 32,) ,Pl","Bl( 29,32) ,Pl","Bl( 29,32) ","Act(901,) ,At(901,) ,Ep(901,) ",1200,700,600,4,9,15,"Others: 1","Pl: 2",NA,NA,NA
+"171","5","SBSmk1/08","ClimateChange",NA,"Pl,Sx",NA,"Bl",NA,"At,Fd",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"1030","5","SBSmk1/09","81248","Sxw - Horsetail","Sx(  1,32) ","Sx(  1,32) ,Pl(  1,) ","Bl(  1,29, 32) ,Pl(  1,) ","Bl(  1,29, 32) ","Act(901,) ,At(901,) ,Sb",1000,500,400,4,9,15,"Others: 0.8","Pl: 1.4",NA,NA,NA
+"181","5","SBSmk1/09","ClimateChange",NA,"Sx",NA,"Bl,Pl",NA,"Act",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"1029","5","SBSmk1/10","81249","Sb - Scrub birch - Sedge","Pl(  1,) ,Sb(  1,) ,Sx(  1,32) ","Pl(  1,) ,Sb(  1,) ,Sx(  1,32) ","","","",400,200,200,4,9,15,"Others: 0.8","Pl: 1.4",NA,NA,NA
+"191","5","SBSmk1/10","ClimateChange",NA,"Pl,Sb,Sx",NA,"",NA,"",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"306","6","SBSwk1/01","80261","Sxw - Oak fern","Fd( 17,) ,Pl,Sx","Fd( 17,) ,Pl,Sx","Bl","Bl","Act(901,) ",1200,700,600,4,9,15,"Others: 1","Fd: 1.4","Pl: 2",NA,NA
+"113","6","SBSwk1/01","ClimateChange",NA,"Sx",NA,"Bl,Fd,Pl",NA,"Act,At,Cw,Ep,Hw",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"304","6","SBSwk1/02","80262","Pl - Huckleberry - Cladina","Fd( 17,) ,Pl","Fd( 17,) ,Pl","","Bl,Sx","Bl,Sx",1000,500,400,7,12,15,"Others: 0.8","Fd: 1","Pl: 1.4",NA,NA
+"114","6","SBSwk1/02","ClimateChange",NA,"Fd,Pl",NA,"",NA,"NS",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"307","6","SBSwk1/03","80263","Pl - Huckleberry - Velvet-leaved blueberry","Fd(  4,17, 32) ,Pl","Fd(  4,17, 32) ,Pl","","Sx( 32,) ","Bl( 32,) ,Sx( 32,) ",1200,700,600,7,12,15,"Others: 1","Fd: 1.4","Pl: 2",NA,NA
+"122","6","SBSwk1/03","ClimateChange",NA,"Fd",NA,"Pl",NA,"Bl,Sx",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"308","6","SBSwk1/04","80264","SxwFd - Knight's plume","Fd,Pl,Sx( 28,) ","Fd,Pl,Sx( 28,) ","Bl( 28,) ","Bl( 28,) ","At(901,) ,Ep(901,) ",1200,700,600,7,12,15,"Others: 1","Fd: 1.4","Pl: 2",NA,NA
+"132","6","SBSwk1/04","ClimateChange",NA,"Fd",NA,"Pl,Sx",NA,"Bl,Ep",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"309","6","SBSwk1/05","80265","Sxw - Huckleberry - Highbush-cranberry","Pl,Sx","Pl,Sx","Bl","Bl","",1200,700,600,7,12,15,"Others: 1","Pl: 2",NA,NA,NA
+"142","6","SBSwk1/05","ClimateChange",NA,"Fd,Sx",NA,"Bl,Pl",NA,"At,Cw,Ep,Hw",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"310","6","SBSwk1/06","80266","Sxw - Pink spirea - Oak fern","Pl,Sx( 32,) ","Pl,Sx( 32,) ","Bl( 32,) ","Bl( 32,) ","Act(901,) ,Sb",1200,700,600,4,9,15,"Others: 1","Pl: 2",NA,NA,NA
+"152","6","SBSwk1/06","ClimateChange",NA,"Sx",NA,"Bl,Pl",NA,"Act,At,Cw,Ep,Hw",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"311","6","SBSwk1/07","80267","Sxw - Twinberry - Oak fern","Sx( 32,) ","Pl,Sx( 32,) ","Bl( 32,) ,Pl","Bl( 32,) ","Act(901,) ,At( 17,901) ,Ep( 17,901) ",1200,700,600,4,9,15,"Others: 1","Pl: 2",NA,NA,NA
+"162","6","SBSwk1/07","ClimateChange",NA,"Sx",NA,"Bl,Pl",NA,"Act,At,Cw,Ep,Hw",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"312","6","SBSwk1/08","80268","Sxw - Devil's club","Sx","Sx,Pl","Bl,Pl","Bl","Act(901,) ,At( 17,901) ,Ep( 17,901) ",1200,700,600,4,9,15,"Others: 1","Pl: 2",NA,NA,NA
+"172","6","SBSwk1/08","ClimateChange",NA,"Sx",NA,"Bl,Pl",NA,"Act,At,Cw,Ep,Hw",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"305","6","SBSwk1/09","80269","Sxw - Horsetail","Sx(  1,32) ","Sx(  1,32) ","Bl(  1,32) ,Pl(  1,) ","Bl(  1,32) ,Pl(  1,) ","Act(901,) ",1000,500,400,4,9,15,"Others: 0.8","Pl: 1.4",NA,NA,NA
+"182","6","SBSwk1/09","ClimateChange",NA,"Sx",NA,"Bl",NA,"Act,Cw,Hw,Pl",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"1069","6","SBSwk1/10","81285","Sxw - Devil's club - Lady fern","Sx(  1,32) ","Sx(  1,32) ,Pl(  1,) ","Bl(  1,29, 32) ,Pl(  1,) ","Bl(  1,29, 32) ","Act(901,) ",1000,500,400,4,9,15,"Others: 0.8","Pl: 1.4",NA,NA,NA
+"192","6","SBSwk1/10","ClimateChange",NA,"Sx",NA,"Bl",NA,"Act,Cw,Hw,Pl",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"303","6","SBSwk1/11","80270","SbSxw - Scrub birch - Sedge","Pl(  1,) ,Sx(  1,32) ","Pl(  1,) ,Sx(  1,32) ","Sb","Sb","Bl(  1,32) ",400,200,200,4,9,15,"Others: 0.8","Pl: 1.4",NA,NA,NA
+"1101","6","SBSwk1/11","ClimateChange",NA,"Sx",NA,"",NA,"Bl,Cw,Hw,Pl",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"1060","7","SBSvk/01","81266","Sxw - Devil's club","Sx( 35,) ","Sx( 35,) ,Fd(  3,9) ","Bl,Fd(  3,9) ,Pl( 34,) ","Bl,Pl( 34,) ","Act(901,) ,At(901,) ,Ep(901,) ",1200,700,600,4,9,15,"Others: 1","Fd: 1.4","Pl: 2",NA,NA
+"115","7","SBSvk/01","ClimateChange",NA,"Fd,Pl,Sx",NA,"Bl",NA,"At,Ep",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"1061","7","SBSvk/02","81267","Pl - Huckleberry - Velvet-leaved blueberry","Pl","Pl","","Bl( 32,) ,Sx( 32,35) ","At(901,) ,Bl( 32,) ,Sx( 32,35) ",1200,700,600,7,12,15,"Others: 1","Pl: 2",NA,NA,NA
+"116","7","SBSvk/02","ClimateChange",NA,"Pl",NA,"Fd",NA,"Bl,Sx",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"1062","7","SBSvk/03","81268","SxwFd - Thimbleberry","Fd,Sx( 35,) ","Fd,Sx( 35,) ","Bl,Pl( 34,) ","Bl,Pl( 34,) ","At(901,) ,Ep(901,) ",1200,700,600,7,12,15,"Others: 1","Fd: 1.4","Pl: 2",NA,NA
+"123","7","SBSvk/03","ClimateChange",NA,"Fd,Pl,Sx",NA,"Bl",NA,"At",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"1063","7","SBSvk/04","81269","Sxw - Oak fern","Sx( 35,) ","Sx( 35,) ,Fd(  3,9) ","Bl,Fd(  3,9) ,Pl( 34,) ","Bl,Pl( 34,) ","Act(901,) ,At(901,) ,Ep(901,) ",1200,700,600,4,9,15,"Others: 1","Fd: 1.4","Pl: 2",NA,NA
+"133","7","SBSvk/04","ClimateChange",NA,"Fd,Pl,Sx",NA,"Bl",NA,"At,Ep",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"1064","7","SBSvk/05","81270","Sxw - Devil's club - Spiny wood fern","Sx(  1,32, 35) ","Sx(  1,32, 35) ,Pl(  1,34) ","Bl(  1,32) ,Pl(  1,34) ","Bl(  1,32) ","Act(901,) ,At(901,) ",1200,700,600,4,9,15,"Others: 1","Pl: 2",NA,NA,NA
+"143","7","SBSvk/05","ClimateChange",NA,"Sx",NA,"Bl,Pl",NA,"Act,At",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"1056","7","SBSvk/06","81271","Sxw - Horsetail","Sx(  1,32) ","Sx(  1,32) ,Pl(  1,34) ","Bl(  1,32) ,Pl(  1,34) ","Bl(  1,32) ","Act(901,) ,At(901,) ",1000,500,400,4,9,15,"Others: 0.8","Pl: 1.4",NA,NA,NA
+"153","7","SBSvk/06","ClimateChange",NA,"Sx",NA,"Bl,Pl",NA,"Act,At",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"1065","7","SBSvk/07","81272","Sxw - Devil's club - Ostrich fern","Sx(  1,32) ","Sx(  1,32) ,Pl(  1,34) ","Bl(  1,32) ,Pl(  1,34) ","Bl(  1,32) ","Act(901,) ",1200,700,600,4,9,15,"Others: 1","Pl: 2",NA,NA,NA
+"163","7","SBSvk/07","ClimateChange",NA,"Bl,Pl,Sx",NA,"Act,Cw,Hw",NA,"At,Ba,Bg,Bp,Dr,Ep,Fd,Lw,Mb,NS,Pw",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"1055","7","SBSvk/08","81273","SbPl - Bog-laurel - Sphagnum","Pl(  1,) ,Sb(  1,) ,Sx(  1,32) ","Pl(  1,) ,Sb(  1,) ,Sx(  1,32) ","","","",400,200,200,4,9,15,"Others: 0.8","Pl: 1.4",NA,NA,NA
+"173","7","SBSvk/08","ClimateChange",NA,"Pl,Sb,Sx",NA,"Act,At,Bl,Cw,Ep,Hw,NS",NA,"Pw",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"1057","7","SBSvk/09","81274","Pl - Huckleberry - Cladina","Pl","Pl","","Bl( 28,29) ,Sx( 28,) ","Bl( 28,29) ,Sx( 28,) ",1000,500,400,7,12,15,"Others: 0.8","Pl: 1.4",NA,NA,NA
+"183","7","SBSvk/09","ClimateChange",NA,"Pl",NA,"Fd",NA,"Bl,Sx",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"1058","7","SBSvk/10","81275","Sxw - Skunk cabbage","Bl(  1,) ,Sx(  1,) ","Bl(  1,) ,Sx(  1,) ","","","",1000,500,400,4,9,15,"Others: 0.8","Pl: 1.4",NA,NA,NA
+"193","7","SBSvk/10","ClimateChange",NA,"Sx",NA,"Bl",NA,"Pl",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"79","8","ESSFwk1/01","80015","Bl - Oak fern - Brachythecium","Bl,Se","Bl,Se,Pl( 34,) ","Pl( 34,) ","","Lw",1200,700,600,4,12,20,"Others: 1","Pl: 2",NA,NA,NA
+"117","8","ESSFwk1/01","ClimateChange",NA,"Bl",NA,"",NA,"Cw,Hw,Pl,Se",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"76","8","ESSFwk1/02","80016","Bl - Huckleberry - Feathermoss","Bl,Se","Bl,Pl,Se","Pl","","",1000,500,400,7,15,20,"Others: 0.8","Pl: 1.4",NA,NA,NA
+"118","8","ESSFwk1/02","ClimateChange",NA,"Pl",NA,"Fd",NA,"Bl,Se",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"80","8","ESSFwk1/03","80017","Bl - Oak fern - Knight's plume","Se","Pl( 34,) ,Se","Bl,Pl( 34,) ","Bl","Lw",1200,700,600,4,12,20,"Others: 1","Pl: 2",NA,NA,NA
+"124","8","ESSFwk1/03","ClimateChange",NA,"",NA,"Bl,Pl",NA,"Fd,Se",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"81","8","ESSFwk1/04","80018","Bl - Twinberry - Lady fern","Bl( 32,) ,Se( 32,) ","Bl( 32,) ,Se( 32,) ","Pl( 34,) ","Pl( 34,) ","",1200,700,600,4,12,20,"Others: 1","Pl: 2",NA,NA,NA
+"134","8","ESSFwk1/04","ClimateChange",NA,"Bl",NA,"",NA,"Cw,Hw,Pl,Se",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"82","8","ESSFwk1/05","80019","Bl - Devil's club - Lady fern","Bl,Se","Bl,Se","Pl( 34,) ","Pl( 34,) ","",1200,700,600,4,12,20,"Others: 1","Pl: 2",NA,NA,NA
+"144","8","ESSFwk1/05","ClimateChange",NA,"Bl",NA,"",NA,"Cw,Hw,Pl,Se",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"77","8","ESSFwk1/06","80020","Bl - Horsetail - Sphagnum","Bl(  1,32) ,Se(  1,32) ","Bl(  1,32) ,Se(  1,32) ","","","",1000,500,400,4,12,20,"All: 0.8",NA,NA,NA,NA
+"154","8","ESSFwk1/06","ClimateChange",NA,"",NA,"Bl",NA,"Cw,Hw,Se",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"78","8","ESSFwk1/07","80021","Bl - Lady fern - Horsetail","Bl(  1,32) ,Se(  1,32) ","Bl(  1,32) ,Se(  1,32) ","","","",1000,500,400,4,12,20,"All: 0.8",NA,NA,NA,NA
+"164","8","ESSFwk1/07","ClimateChange",NA,"Bl",NA,"",NA,"Cw,Hw,Se",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"1176","9","ESSFmv3/01","85104","Bl - Rhododendron - Feathermoss","Bl,Se","Bl,Se","Pl( 34,) ","Pl( 34,) ","",1200,700,600,4,12,20,"Others: 0.8","Pl: 1.6",NA,NA,NA
+"119","9","ESSFmv3/01","ClimateChange",NA,"Bl,Pl",NA,"",NA,"Se",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"1173","9","ESSFmv3/02","85105","BlPl - Crowberry - Cladina","Pl( 34,) ","Pl( 34,) ","Bl( 28,) ,Se( 28,) ","Bl( 28,) ,Se( 28,) ","",1000,500,400,4,12,20,"Others: 0.6","Pl: 1.2",NA,NA,NA
+"1110","9","ESSFmv3/02","ClimateChange",NA,"Pl",NA,"Bl",NA,"Se",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"1174","9","ESSFmv3/03","85106","BlSb - Labrador tea","Bl,Se","Bl,Se","Pl( 34,) ","Pl( 34,) ,Sb","Sb",1000,500,400,4,12,20,"Others: 0.6","Pl: 1.2",NA,NA,NA
+"125","9","ESSFmv3/03","ClimateChange",NA,"Pl",NA,"Bl",NA,"Se",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"1177","9","ESSFmv3/04","85107","Bl - Oak fern - Knight's plume","Bl,Se","Bl,Se","","Pl( 34,) ","Pl( 34,) ",1200,700,600,4,12,20,"Others: 0.8","Pl: 1.6",NA,NA,NA
+"135","9","ESSFmv3/04","ClimateChange",NA,"Bl",NA,"",NA,"Pl,Se",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"1178","9","ESSFmv3/05","85108","Bl - Devil's club - Rhododendron","Bl,Se","Bl,Se","","Pl( 34,) ","Pl( 34,) ",1200,700,600,4,12,20,"Others: 0.8","Pl: 1.6",NA,NA,NA
+"145","9","ESSFmv3/05","ClimateChange",NA,"Bl",NA,"",NA,"Pl,Se,Sx",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"1179","9","ESSFmv3/06","85109","Sxw - Huckleberry - Highbush-cranberry","Bl,Sx","Bl,Sx","Pl( 34,) ","Pl( 34,) ","",1200,700,600,7,12,15,"Others: 0.8","Pl: 1.6",NA,NA,NA
+"155","9","ESSFmv3/06","ClimateChange",NA,"Bl",NA,"Pl,Sx",NA,"Se",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"1175","9","ESSFmv3/07","85110","Bl - Horsetail - Feathermoss","Bl(  1,) ,Se(  1,32) ","Bl(  1,) ,Se(  1,32) ","Pl(  1,34) ","Pl(  1,34) ","",1000,500,400,4,12,20,"Others: 0.6","Pl: 1.2",NA,NA,NA
+"165","9","ESSFmv3/07","ClimateChange",NA,"Bl",NA,"Pl,Se",NA,"Sx",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"862","10","ESSFmv2/01","81073","Bl - Rhododendron - Feathermoss","Bl,Se","Bl,Se","Pl","Pl","",1200,700,600,4,12,20,"Others: 0.8","Pl: 1.6",NA,NA,NA
+"120","10","ESSFmv2/01","ClimateChange",NA,"Bl",NA,"Pl,Se",NA,"",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"863","10","ESSFmv2/02","81074","Bl - Lingonberry","Bl,Pl,Se","Bl,Pl,Se","","","",1200,700,600,4,12,20,"Others: 0.8","Pl: 1.6",NA,NA,NA
+"1111","10","ESSFmv2/02","ClimateChange",NA,"Bl",NA,"Pl,Se",NA,"",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"861","10","ESSFmv2/03","81075","BlSb - Labrador tea","Bl,Pl,Se","Bl,Pl,Se","","Sb","Sb",1000,500,400,4,12,20,"Others: 0.6","Pl: 1.2",NA,NA,NA
+"126","10","ESSFmv2/03","ClimateChange",NA,"Bl",NA,"Pl,Se",NA,"",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"864","10","ESSFmv2/04","81076","Bl - Oak fern - Knight's plume","Bl,Se","Bl,Se","Pl","Pl","",1200,700,600,4,12,20,"Others: 0.8","Pl: 1.6",NA,NA,NA
+"136","10","ESSFmv2/04","ClimateChange",NA,"Bl",NA,"Se",NA,"Pl",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"865","10","ESSFmv2/05","81077","Bl - Devil's club - Rhododendron","Bl,Se","Bl,Se","Pl","Pl","",1200,700,600,4,12,20,"Others: 0.8","Pl: 1.6",NA,NA,NA
+"146","10","ESSFmv2/05","ClimateChange",NA,"Bl",NA,"Se",NA,"Pl",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"860","10","ESSFmv2/06","81078","Bl - Alder - Horsetail","Bl(  1,32) ,Se(  1,32) ","Bl(  1,32) ,Se(  1,32) ","Pl(  1,) ","Pl(  1,) ","",400,200,200,4,12,20,"Others: 0.6","Pl: 1.2",NA,NA,NA
+"156","10","ESSFmv2/06","ClimateChange",NA,"Bl",NA,"Se",NA,"Pl",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"915","11","ICHvk2/01","81124","CwHw - Devil's club - Lady fern","Sx( 35,) ","Sx( 35,) ,Cw( 32,) ,Fd(  3,9, 32) ","Bl,Cw( 32,) ,Fd(  3,9, 32) ,Pl( 34,) ","Bl,Pl( 34,) ","Act(901,) ,At(901,) ,Ep(901,) ,Hw( 32,) ",1200,700,600,4,9,15,"Pl: 2",NA,NA,NA,NA
+"127","11","ICHvk2/01","ClimateChange",NA,"Cw,Sx",NA,"Bl,Fd,Hw",NA,"Act,At,Ep,Pl",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"913","11","ICHvk2/02","81125","HwCw - Cladonia","Fd,Hw","Fd,Hw","Pl( 34,) ","Pl( 34,) ,Cw,Sx( 35,) ","Cw,Sx( 35,) ",1000,500,400,7,12,15,"Others: 0.8","Pl: 1.4",NA,NA,NA
+"1112","11","ICHvk2/02","ClimateChange",NA,"Fd,Pl",NA,"",NA,"Hw,NS",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"916","11","ICHvk2/03","81126","HwCw - Step moss","Fd","Fd,Pl( 34,) ","Pl( 34,) ","Cw,Sx( 35,) ","At(901,) ,Bl,Cw,Ep(901,) ,Hw,Sx( 35,) ",1200,700,600,4,9,15,"Fd: 1.4","Others: 1","Pl: 2",NA,NA
+"128","11","ICHvk2/03","ClimateChange",NA,"Fd",NA,"Pl",NA,"Bl,Cw,Sx",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"917","11","ICHvk2/04","81127","CwHw - Oak fern","Sx( 35,) ","Sx( 35,) ,Cw,Fd(  3,) ","Bl,Cw,Fd(  3,) ,Pl( 34,) ","Bl,Pl( 34,) ","Act(901,) ,At(901,) ,Ep(901,) ,Hw",1200,700,600,4,9,15,"Others: 1","Fd: 1.4","Pl: 2",NA,NA
+"137","11","ICHvk2/04","ClimateChange",NA,"Fd,Sx",NA,"Bl,Cw",NA,"At,Ep,Hw,Pl",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"918","11","ICHvk2/05","81128","Cw - Devil's club - Ostrich fern","Bl(  1,) ,Sx(  1,32, 35) ","Bl(  1,) ,Sx(  1,32, 35) ","Pl(  1,34) ","Pl(  1,34) ,Cw( 32,) ","Act(901,) ,Cw( 32,) ,Ep(901,) ,Hw( 32,) ",1200,700,600,4,9,15,"Pl: 2","Others: 1",NA,NA,NA
+"147","11","ICHvk2/05","ClimateChange",NA,"Sx",NA,"Bl,Cw",NA,"Act,Ep,Hw,Pl",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"914","11","ICHvk2/06","81129","CwSxw - Skunk cabbage","Bl(  1,) ,Sx(  1,32, 35) ","Bl(  1,) ,Sx(  1,32, 35) ,Cw(  1,32) ","Cw(  1,32) ,Pl(  1,34) ","Pl(  1,34) ","Act(901,) ,Hw(  1,32) ",1000,500,400,4,9,15,"Pl: 1.4","Others: 0.8",NA,NA,NA
+"157","11","ICHvk2/06","ClimateChange",NA,"Cw,Sx",NA,"Bl",NA,"Hw,Pl",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"912","11","ICHvk2/07","81130","Sb - Sphagnum","Pl(  1,34) ","Pl(  1,34) ","","Sb,Sx(  1,32, 35) ","Sb,Sx(  1,32, 35) ",400,200,200,4,9,15,"Pl: 1.4","Others: 0.8",NA,NA,NA
+"166","11","ICHvk2/07","ClimateChange",NA,"",NA,"Sx",NA,"Bl,Cw,Hw,NS,Pl",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"932","12","ICHwk3/01","81138","CwHw - Oak fern","Cw,Sx","Cw,Sx,Fd( 32,) ","Bl( 29,) ,Fd( 32,) ,Hw,Pl( 34,) ","Bl( 29,) ,Hw,Pl( 34,) ","Act(901,) ,At(901,) ,Ep(901,) ",1200,700,600,4,9,15,"Pl: 2",NA,NA,NA,NA
+"129","12","ICHwk3/01","ClimateChange",NA,"Fd",NA,"Cw,Hw,Pl,Sx",NA,"At,Bl,Ep,Lw,Pw",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"928","12","ICHwk3/02","81139","Hw - Azalea - Cladonia","Pl( 34,) ","Pl( 34,) ,Hw","Hw","Sx","Sx",1000,500,400,7,12,15,"Others: 0.8","Pl: 1.4",NA,NA,NA
+"1113","12","ICHwk3/02","ClimateChange",NA,"Pl",NA,"Fd",NA,"Py",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"933","12","ICHwk3/03","81140","CwSxw - Prince's pine - Cat's-tail moss","Fd","Fd,Pl( 34,) ","Hw,Pl( 34,) ","Hw,Cw,Sx","At(901,) ,Bl( 29,) ,Cw,Ep(901,) ,Sx",1200,700,600,4,9,15,"Others: 1","Fd: 1.4","Pl: 2",NA,NA
+"1210","12","ICHwk3/03","ClimateChange",NA,"Fd",NA,"Pl",NA,"Ep,Lw",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"934","12","ICHwk3/04","81141","HwCw - Step moss","Fd,Pl","Fd,Pl","Hw","Hw,Cw,Sx","At(901,) ,Bl( 29,) ,Cw,Ep(901,) ,Sx",1200,700,600,4,9,15,"Fd: 1.4","Others: 1","Pl: 2",NA,NA
+"138","12","ICHwk3/04","ClimateChange",NA,"Fd",NA,"Pl",NA,"Ep,Hw,Lw",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"935","12","ICHwk3/05","81142","CwHw - Devil's club - Lady fern","Cw( 32,) ,Fd(  1,32) ,Sx( 35,) ","Cw( 32,) ,Fd(  1,32) ,Sx( 35,) ","Bl( 29,) ,Pl( 34,) ","Bl( 29,) ,Pl( 34,) ","Act(901,) ,At(901,) ,Ep(901,) ,Hw( 32,) ",1200,700,600,4,9,15,"Fd: 1.4","Others: 1","Pl: 2",NA,NA
+"148","12","ICHwk3/05","ClimateChange",NA,"Cw,Sx",NA,"Bl,Fd,Hw",NA,"Act,At,Ep,Lw,Pl,Pw",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"929","12","ICHwk3/06","81143","CwSxw - Devil's club - Horsetail","Cw( 32,) ,Sx(  1,32, 35) ","Cw( 32,) ,Sx(  1,32, 35) ","Bl(  1,29, 32) ,Pl(  1,34) ","Bl(  1,29, 32) ,Pl(  1,34) ","Act(901,) ,At(901,) ,Ep(901,) ,Hw( 32,) ",1000,500,400,4,9,15,"Others: 0.8","Pl: 1.4",NA,NA,NA
+"158","12","ICHwk3/06","ClimateChange",NA,"Cw,Sx",NA,"Bl",NA,"Act,Hw,Pl",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"930","12","ICHwk3/07","81144","Hw - Wood horsetail - Sphagnum","Pl(  1,34) ","Pl(  1,34) ,Sx(  1,32, 35) ","Hw( 32,) ,Sx(  1,32, 35) ","Hw( 32,) ,Cw( 32,) ","Act(901,) ,At(901,) ,Cw( 32,) ,Ep(901,) ",1000,500,400,4,9,15,"Others: 0.8","Pl: 1.4",NA,NA,NA
+"167","12","ICHwk3/07","ClimateChange",NA,"Sx",NA,"Cw,Hw",NA,"Act,Bl,Pl",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"931","12","ICHwk3/08","81145","PlSb - Sedge - Sphagnum","Cw(  1,32) ,Sx(  1,32, 35) ","Cw(  1,32) ,Sx(  1,32, 35) ","Bl(  1,29, 32) ,Hw(  1,32) ","Bl(  1,29, 32) ,Hw(  1,32) ","Act(901,) ",1000,500,400,4,9,15,"All: 0.8",NA,NA,NA,NA
+"174","12","ICHwk3/08","ClimateChange",NA,"",NA,"Cw,Sx",NA,"Bl,Hw",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"927","12","ICHwk3/09","81146","CwSxw - Skunk cabbage","Pl(  1,34) ","Pl(  1,34) ","Bl(  1,29, 32) ","Bl(  1,29, 32) ","",400,200,200,3,8,11,"Pl: 1.4","Sb: 0.8","Bl: 0.8",NA,NA
+"184","12","ICHwk3/09","ClimateChange",NA,"",NA,"",NA,"Bl,Cw,Sx",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"209","13","SBPSdc/01","80163","Pl - Juniper - Feathermoss","Pl,Sx( 28,) ","Pl,Sx( 28,) ","","Sb( 28,) ","At(901,) ,Lw,Lw,Sb( 28,) ",1200,700,600,7,12,15,"Pl: 1.4",NA,NA,NA,NA
+"130","13","SBPSdc/01","ClimateChange",NA,"Pl,Sx",NA,"",NA,"At,Fd,Lw,Lw",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"205","13","SBPSdc/02","80164","Pl - Kinnikinnick - Cladonia","Pl( 28,) ","Pl( 28,) ","","","At(901,) ",1000,500,400,7,12,15,"Pl: 1",NA,NA,NA,NA
+"1114","13","SBPSdc/02","ClimateChange",NA,"Pl",NA,"Fd",NA,"",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"210","13","SBPSdc/03","80165","Pl - Kinnikinnick - Feathermoss","Pl","Pl","","Sb(  4,15, 28) ,Sx(  4,28) ","At(901,) ,Sb(  4,15, 28) ,Sx(  4,28) ",1200,700,600,7,12,15,"Pl: 1.4","Others: 0.8",NA,NA,NA
+"1211","13","SBPSdc/03","ClimateChange",NA,"Pl",NA,"Fd",NA,"At,Sx",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"211","13","SBPSdc/04","80166","PlSb - Feathermoss","Pl,Sx","Pl,Sx","","Sb( 15,) ","At(901,) ,Sb( 15,) ",1200,700,600,7,12,15,"Others: 0.8","Pl: 1.4",NA,NA,NA
+"139","13","SBPSdc/04","ClimateChange",NA,"Pl,Sx",NA,"",NA,"At,Fd",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"206","13","SBPSdc/05","80167","Sxw - Scrub birch - Feathermoss","Pl,Sx","Pl,Sx","","Sb( 15,) ","At(901,) ,Sb( 15,) ",1000,500,400,4,9,15,"Pl: 1","Others: 0.6","Pl: 1","Others: 0.6",NA
+"149","13","SBPSdc/05","ClimateChange",NA,"Pl,Sx",NA,"",NA,"At,Fd",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"207","13","SBPSdc/06","80168","Sxw - Horsetail - Meadowrue","Pl,Sx( 32,) ","Pl,Sx( 32,) ","","Sb( 15,) ","Act(901,) ,At(901,) ,Sb( 15,) ",1000,500,400,4,9,15,"Others: 0.6","Pl: 1",NA,NA,NA
+"159","13","SBPSdc/06","ClimateChange",NA,"Pl,Sx",NA,"",NA,"Fd",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"204","13","SBPSdc/07","80169","Sb - Scrub birch - Sedge","Sx(  1,32) ","Sx(  1,32) ,Pl(  1,) ","Pl(  1,) ","Sb(  1,) ","Sb(  1,) ",400,200,200,4,9,15,"Pl: 1","Others: 0.6",NA,NA,NA
+"168","13","SBPSdc/07","ClimateChange",NA,"Sx",NA,"Pl",NA,"",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"208","13","SBPSdc/08","80170","Sxw - Horsetail - Glow moss","Sx(  1,32) ","Sx(  1,32) ","Pl(  1,) ","Pl(  1,) ,Sb( 15,) ","Act(901,) ,Sb( 15,) ",1000,500,400,4,9,15,"Pl: 1","Others: 0.6",NA,NA,NA
+"175","13","SBPSdc/08","ClimateChange",NA,"Pl,Sx",NA,"",NA,"",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"28","14","BWBSdk/101","1043873","Sw - Soopolallie - Step moss","Pl,Sw( 32,) ","Sw( 32,) ,Pl","Bl","Bl","Acb(901,) ,At(901,) ,Ep(901,) ,Sb",1200,700,600,7,20,20,"Others: 0.8","Pl: 1.6",NA,NA,NA
+"140","14","BWBSdk/101","ClimateChange",NA,"Pl",NA,"",NA,"At,Bl,Ep,Sw,Sx",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"25","14","BWBSdk/102","1043874","Pl - Kinnikinnick - Lingonberry","Pl","Pl","","Sw,Sb","At(901,) ,Bl( 53,) ,Sw",1000,500,400,7,20,20,"Others: 0.6","Pl: 1.2",NA,NA,NA
+"1115","14","BWBSdk/102","ClimateChange",NA,"Pl",NA,"",NA,"At",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"29","14","BWBSdk/103","1043875","SwPl - Soopolallie - Toad-flax","Pl,Sw","Sw,Pl","Bl","Bl","At(901,) ,Ep(901,) ,Sb",1200,700,600,7,20,20,"Others: 0.8","Pl: 1.6",NA,NA,NA
+"1212","14","BWBSdk/103","ClimateChange",NA,"Pl",NA,"",NA,"At,Sw,Sx",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"30","14","BWBSdk/104","1043876","Sb - Labrador tea - Step moss","Pl(  1,) ,Sb(  1,) ,Sw(  1,32) ","Sw(  1,32) ,Sb(  1,) ,Pl(  1,) ","","","At(901,) ,Bl( 53,) ",1200,700,600,7,20,20,"Others: 0.8","Pl: 1.6",NA,NA,NA
+"1310","14","BWBSdk/104","ClimateChange",NA,"Pl",NA,"",NA,"At,Sb",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"26","14","BWBSdk/110","1043877","Sw - Currant - Horsetail","Sw(  1,32) ","Sw(  1,32) ,Pl(  1,) ","Pl(  1,) ","Sb","Acb(901,) ,At(901,) ,Bl( 53,) ,Ep(901,) ",1000,500,400,4,20,20,"Others: 0.6","Pl: 1.2",NA,NA,NA
+"1410","14","BWBSdk/110","ClimateChange",NA,"",NA,"Pl",NA,"Bl,Sw,Sx",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"27","14","BWBSdk/111","1043878","Sw - Mountain alder - Horsetail","Acb(900,) ,Sw(  1,32) ","Pl(  1,) ,Sw(  1,32) ","Pl(  1,) ","Sb","At(901,) ,Bl( 53,) ,Ep(901,) ",1000,500,400,4,20,20,"Others: 0.6","Pl: 1.2",NA,NA,NA
+"1510","14","BWBSdk/111","ClimateChange",NA,"",NA,"Pl",NA,"Acb,Bl,Sw,Sx",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"169","14","BWBSdk/112","1043880","AcbSw - Mountain alder - Dogwood","Acb(900,901?) ","Acb(900,901?) ","Sw(  1,32) ","Sw(  1,32) ","",2500,2000,1700,4,20,20,"Others: 0.6","Ac: 2",NA,NA,NA
+"2","14","BWBSdk/112","ClimateChange",NA,"",NA,"",NA,"Acb,Pl,Sx",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"176","14","BWBSdk/Gb","No Data Available",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"21","14","BWBSdk/Gb","ClimateChange",NA,"",NA,"",NA,"Pl",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"185","14","BWBSdk/Gg","No Data Available",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"22","14","BWBSdk/Gg","ClimateChange",NA,"",NA,"At,Bl,Cw,Ep,Fd,Hw,Lw,NS,Pl,Pw,Sx",NA,"",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"150","15","BWBSdk/Gb","No Data Available",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"23","15","BWBSdk/Gb","ClimateChange",NA,"",NA,"",NA,"",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"34","15","BWBSmk/101","1043881","Sw - Lingonberry - Step moss","Acb(900,) ,Pl,Sw( 32,) ","Sw( 32,) ,Pl","","Sb","At(901,) ,Ep(901,) ,Sb",1200,700,600,4,20,20,"Others: 1","Pl: 2",NA,NA,NA
+"1116","15","BWBSmk/101","ClimateChange",NA,"Acb,Pl,Sw",NA,"",NA,"At,Ep,Sb",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"31","15","BWBSmk/102","1043885","Pl - Kinnikinnick - Lingonberry","Pl","Pl","","Sb,Sw","At(901,) ,Sb,Sw",1000,500,400,7,20,20,"Others: 0.6","Pl: 1.2",NA,NA,NA
+"1213","15","BWBSmk/102","ClimateChange",NA,"Pl",NA,"",NA,"At,Sw",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"35","15","BWBSmk/103","1043886","SwPl - Soopolallie - Fuzzy-spiked wildrye","Pl,Sw( 32,) ","Pl,Sw( 32,) ","","","At(901,) ,Ep(901,) ",1200,700,600,7,20,20,"Others: 0.8","Pl: 1.6",NA,NA,NA
+"1311","15","BWBSmk/103","ClimateChange",NA,"Pl,Sw",NA,"",NA,"At",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"36","15","BWBSmk/104","1043887","Sb - Labrador tea - Step moss","Pl,Sb,Sw","Pl,Sw,Sb","Lt","Lt","At(901,) ",1200,500,400,4,20,20,"Others: 0.6","Pl: 1.2",NA,NA,NA
+"1411","15","BWBSmk/104","ClimateChange",NA,"Pl",NA,"Sb,Sw",NA,"At",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"32","15","BWBSmk/110","1043888","Sw - Currant - Horsetail","Acb(900,) ,Sw(  1,32) ","Sw(  1,32) ,Pl(  1,) ","Pl(  1,) ","Sb","At(901,) ,Ep(901,) ,Sb",1000,500,400,4,20,20,"Others: 0.6","Pl: 1.2",NA,NA,NA
+"1511","15","BWBSmk/110","ClimateChange",NA,"Acb,Sw",NA,"Pl",NA,"",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"33","15","BWBSmk/111","1043889","Sw - Mountain alder - Horsetail","Acb(900,) ,Sw(  1,32) ","Sw(  1,32) ,Pl(  1,) ","Pl(  1,) ","Sb","At(901,) ,Ep(901,) ,Sb",1000,500,400,4,20,20,"Others: 0.6","Pl: 1.2",NA,NA,NA
+"1610","15","BWBSmk/111","ClimateChange",NA,"Acb,Sw",NA,"",NA,"",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"212","15","BWBSmk/112","1043890","AcbSw - Mountain alder - Dogwood","Acb(900,901?) ","Acb(900,901?) ","Sw(  1,32) ","Sw(  1,32) ","",1000,500,400,4,20,20,"Sw: 0.8","Sw: 1","Ac: 2",NA,NA
+"177","15","BWBSmk/112","ClimateChange",NA,"Acb,Sw",NA,"",NA,"",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"186","15","BWBSmk/Gg","No Data Available",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"221","15","BWBSmk/Gg","ClimateChange",NA,"",NA,"",NA,"",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"160","16","BWBSdk/Gb","No Data Available",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"24","16","BWBSdk/Gb","ClimateChange",NA,"",NA,"",NA,"",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"38","16","BWBSmw/101","1043891","Sw - Trailing raspberry - Step moss","Acb(900,) ,Pl,Sw( 32,) ","Pl,Sw( 32,) ","","Sb","At(901,) ,Ep(901,) ,Sb",1200,700,600,4,20,20,"Others: 1","Pl: 2",NA,NA,NA
+"1117","16","BWBSmw/101","ClimateChange",NA,"Acb,Pl,Sw",NA,"",NA,"At,Ep,Sb",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"39","16","BWBSmw/102","1043895","Pl - Kinnikinnick - Lingonberry","Pl","Pl","","Sw","At(901,) ,Sw",1200,700,600,7,20,20,"Sw: 1","Pl: 1.4",NA,NA,NA
+"1214","16","BWBSmw/102","ClimateChange",NA,"Pl",NA,"",NA,"At,Sw",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"40","16","BWBSmw/103","1043896","SwPl - Soopolallie - Fuzzy-spiked wildrye","Pl","Pl,Sw( 28,) ","Sw( 28,) ","","At(901,) ",1200,700,600,7,20,20,"Sw: 1","Pl: 2",NA,NA,NA
+"1312","16","BWBSmw/103","ClimateChange",NA,"Pl",NA,"Sw",NA,"At",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"41","16","BWBSmw/104","1043897","Sb - Labrador tea - Step moss","Pl","Pl","","Sw( 28,32) ,Sb","At(901,) ,Sb,Sw( 28,32) ",1200,700,600,7,20,20,"Others: 1","Pl: 2",NA,NA,NA
+"1412","16","BWBSmw/104","ClimateChange",NA,"Pl",NA,"",NA,"At,Sb,Sw",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"42","16","BWBSmw/110","1043898","Sw - Oak fern - Sarsaparilla","Sw( 32,) ","Sw( 32,) ,Pl","Pl","Sb","Acb(901,) ,At(901,) ,Ep(901,) ,Sb",1200,700,600,4,20,20,"Others: 1","Pl: 2",NA,NA,NA
+"1512","16","BWBSmw/110","ClimateChange",NA,"Sw",NA,"Pl",NA,"Acb,At,Ep,Sb",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"37","16","BWBSmw/111","1043899","Sw - Currant - Horsetail","Acb(900,) ,Sw(  1,32) ","Sw(  1,32) ,Pl(  1,) ","Pl(  1,) ","","",1000,500,400,4,20,20,"Sw: 0.8","Pl: 1.4",NA,NA,NA
+"1611","16","BWBSmw/111","ClimateChange",NA,"Acb,Sw",NA,"Pl",NA,"",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"43","16","BWBSmw/112","1043900","AcbSw - Mountain alder - Dogwood","Acb(900,) ","Acb(900,) ","Sw(  1,32) ","Sw(  1,32) ","",2500,2000,1700,4,20,20,"Sw: 1","Ac: 2",NA,NA,NA
+"178","16","BWBSmw/112","ClimateChange",NA,"Acb",NA,"Sw",NA,"",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"187","16","BWBSmw/Gg","No Data Available",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"213","16","BWBSmw/Gg","ClimateChange",NA,"",NA,"",NA,"",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"170","17","SWBmk/01","No Data Available",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"214","17","SWBmk/01","ClimateChange",NA,"",NA,"",NA,"Pl",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"3","17","SWBmk/02","No Data Available",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"4","17","SWBmk/02","ClimateChange",NA,"",NA,"",NA,"Pl",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"5","17","SWBmk/03","No Data Available",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"6","17","SWBmk/03","ClimateChange",NA,"",NA,"",NA,"Pl",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"7","17","SWBmk/04","No Data Available",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"8","17","SWBmk/04","ClimateChange",NA,"",NA,"",NA,"Pl",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"9","17","SWBmk/05","No Data Available",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"10","17","SWBmk/05","ClimateChange",NA,"",NA,"",NA,"Pl",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"1118","17","SWBmk/06","No Data Available",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"1215","17","SWBmk/06","ClimateChange",NA,"",NA,"",NA,"Pl",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"1313","17","SWBmk/07","No Data Available",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"1413","17","SWBmk/07","ClimateChange",NA,"",NA,"",NA,"",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"1513","17","SWBmk/08","No Data Available",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"1612","17","SWBmk/08","ClimateChange",NA,"",NA,"",NA,"Pl",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"179","17","SWBmk/09","No Data Available",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"188","17","SWBmk/09","ClimateChange",NA,"",NA,"",NA,"Act,At,Ba,Bl,Cw,Ep,Hw,Lt,NS,Pl,Pw,Sb,Se,Sw,Sx",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
