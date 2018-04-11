@@ -5,7 +5,8 @@
 #there are some cutoffs/constants that might be changed or could even be adjustable on the web tool. I've 
 #tried to comment these. Please don't hesitate to get in touch if anything doesn't makes sense. Thanks!
 
-.libPaths("E:/R packages")
+#.libPaths("E:/R packages")
+.libPaths("F:/R/Packages")
 require (RGtk2)
 require(plyr)
 require (rChoiceDialogs)
@@ -23,6 +24,7 @@ require(reshape2)
 require(reshape)
 library(doParallel)
 require(data.table)
+install.packages ("labdsv")
 #===============================================================================
 # Clear environment and add in previous rF model 
 #===============================================================================
@@ -121,10 +123,10 @@ setwd(wd)
 
 ###enter model file name
 fname="BGCv10_2000Pt_Rnd_Normal_1961_1990MSY_RFmodelKiriFinal.Rdata"
-fname = (file.choose())
+#fname = (file.choose())
 load(fname)
 
-#choose data file
+#choose data file: ClimateBC output including all variables and all future periods
 fplot=(file.choose())
 
 Columns = c("GCM", "ID1", "ID2", "Latitude", "Longitude", "Elevation", "AHM", "bFFP",
@@ -225,7 +227,7 @@ edatopic2 <- E1[E1$MergedBGC %in% e2,]
 edatopic2$Codes[edatopic2$Codes == ""] <- NA
 
 #################Import and Build Tree species suitability##############
-treesuit="TreeSppSuit_v10.5"
+treesuit="TreeSppSuit_v10.6"
 treesuit2=paste(wd,"/",treesuit,".csv",sep="")
 S1 <- read.csv(treesuit2,stringsAsFactors=F,na.strings=".")
 S1 <- unique(S1)
@@ -242,7 +244,7 @@ Y3.sub1 <- Y3.sub1[,c("SiteNo","FuturePeriod","BGC","BGC.pred")]
 Y3.sub1 <- Y3.sub1[order(Y3.sub1$SiteNo, Y3.sub1$FuturePeriod, Y3.sub1$BGC,Y3.sub1$BGC.pred),]
 
 BGCminProp <- 0 ##to exclude BGCs with low prediction rates
-average <- "Yes" ##Yes or No
+average <- "No"##"Yes" ##
 
 #####Average points (if specified) and remove BGCs with low predictions####
 
@@ -283,9 +285,14 @@ gc()
 
 ###OPTIONAL: Set up to run loops in parallel###
 require(doParallel)
-cl = makePSOCKcluster(6)
-registerDoParallel(cl)
-clusterEvalQ(cl, .libPaths("E:/R packages"))
+set.seed(123321)
+coreNo <- makeCluster(detectCores() - 1)
+registerDoParallel(coreNo, cores = detectCores() - 1)
+Cores <- as.numeric(detectCores()-1)
+clusterEvalQ(coreNo, .libPaths("F:/R/Packages"))
+#cl = makePSOCKcluster(6)
+#registerDoParallel(Cores)
+#clusterEvalQ(cl, .libPaths("E:/R packages"))
 
 #=======================================================================
 #             LOAD FUNCTIONS USED IN LOOP AND FOR SUMMARY STATS-- NEW!!!
@@ -664,7 +671,7 @@ allOutput <- foreach(Site = unique(SiteNo.suit$SiteNo), .combine =  combineList,
 
 write.csv(allOutput[[2]], "SummaryExample.csv")
 write.csv(allOutput[[1]], "RawDataExample.csv")
-write.csv(allOutput[[3]], "ReferenceGuide")
+write.csv(allOutput[[3]], "ReferenceGuide.csv")
 
 
 
