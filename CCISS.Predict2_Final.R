@@ -303,7 +303,7 @@ clusterEvalQ(coreNo, .libPaths("E:/R packages"))
 #    To run loops in parallel, change the %do% in the first loop to %dopar%
 #    Would also need to load all packages used inside loop onto workers using .packages command
 #========================================================================================
-SiteNo.suit <-  foreach(SNL = SiteNo.list, .combine = rbind, .packages = c("doBy","foreach")) %dopar% {##  for each SiteNo in the data
+SiteNo.suit <-  foreach(SNL = SiteNo.list, .combine = rbind, .packages = c("doBy","foreach")) %do% {##change to dopar if multiple individual points
   
   options(warn=2)
   
@@ -322,7 +322,7 @@ SiteNo.suit <-  foreach(SNL = SiteNo.list, .combine = rbind, .packages = c("doBy
     ##Y3.SSlist = "SBSmc2/01"
     Y3.SSlist = as.list(unique(BGCfocalE$SS_NoSpace))
     
-    FTS2 <-  foreach(SS = Y3.SSlist, .combine =rbind) %do% {      ##  for each site series for a SiteNo BGC
+    FTS2 <-  foreach(SS = Y3.SSlist, .combine =rbind,.packages = c("doBy","foreach")) %dopar% {##change to %do% if multiple individual points
   
       options(warn=2)
       
