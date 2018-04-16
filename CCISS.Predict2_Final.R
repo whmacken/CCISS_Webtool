@@ -269,6 +269,7 @@ Y3.sub1 <- within(Y3.sub1,
                   BGC.prop <- Pred.len/BGC.len)
 
 Y3.sub1 <- Y3.sub1[order(Y3.sub1$SiteNo,Y3.sub1$FuturePeriod,Y3.sub1$BGC,Y3.sub1$BGC.pred),]
+BGC.pred.out <- unique(Y3.sub1[,c(1:4,7)])
 
 BGClist = (unique(Y3.sub1$BGC))
 FuturePeriod.list <- as.list(unique(Y3.sub1$FuturePeriod))
