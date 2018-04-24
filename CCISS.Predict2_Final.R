@@ -242,7 +242,7 @@ Y3.sub1$BGC.pred <- gsub("[[:space:]]","",Y3.sub1$BGC.pred)
 Y3.sub1 <- Y3.sub1[,c("SiteNo","FuturePeriod","BGC","BGC.pred")]
 Y3.sub1 <- Y3.sub1[order(Y3.sub1$SiteNo, Y3.sub1$FuturePeriod, Y3.sub1$BGC,Y3.sub1$BGC.pred),]
 
-BGCminProp <- 0.05 ##to exclude BGCs with low prediction rates
+BGCminProp <- 0 ##to exclude BGCs with low prediction rates
 average <- "No"##"Yes" ##
 
 #####Average points (if specified) and remove BGCs with low predictions####
@@ -304,9 +304,9 @@ clusterEvalQ(coreNo, .libPaths("E:/R packages"))
 #    To run loops in parallel, change the %do% in the first loop to %dopar%
 #    Would also need to load all packages used inside loop onto workers using .packages command
 #========================================================================================
-SiteNo.suit <-  foreach(SNL = SiteNo.list, .combine = rbind, .packages = c("doBy","foreach")) %do% {##change to dopar if multiple individual points
+SiteNo.suit <-  foreach(SNL = SiteNo.list, .combine = rbind, .packages = c("doBy","foreach")) %do% {##  for each SiteNo in the data
   
-  options(warn=2)
+  options(warn=0)
   
   cat("===========================================","\n")
   cat(SNL, "\n", "===========================================","\n")
@@ -320,12 +320,12 @@ SiteNo.suit <-  foreach(SNL = SiteNo.list, .combine = rbind, .packages = c("doBy
     Y3.BGC.pred<- unique(Y3.each$BGC.pred)
     BGCfocalE <- edatopic1[edatopic1$MergedBGC %in% Y3.BGC  , ] ### extracts edatopic space for BGC focal of SiteNo
     BGCfutureE <- edatopic2[edatopic2$MergedBGC %in% Y3.BGC.pred  , ] #extracts edatopic info only for predicted BGCs
-    ##Y3.SSlist = "SBSmc2/01"
+    
     Y3.SSlist = as.list(unique(BGCfocalE$SS_NoSpace))
     
-    FTS2 <-  foreach(SS = Y3.SSlist, .combine =rbind,.packages = c("doBy","foreach")) %dopar% {##change to %do% if multiple individual points
+    FTS2 <-  foreach(SS = Y3.SSlist, .combine =rbind, .packages = c("doBy","foreach")) %dopar% {      ##  for each site series for a SiteNo BGC
   
-      options(warn=2)
+      options(warn=0)
       
       cat("===========================================","\n")
       
@@ -372,8 +372,11 @@ SiteNo.suit <-  foreach(SNL = SiteNo.list, .combine = rbind, .packages = c("doBy
           dat
         }
         
+        if(length(futureSS) > 0){
         futureSS <- futureSS[futureSS$alloverlap > 0,] ###Adjust this to remove low overlap SS
         Y3.each <- unique(Y3.each)
+        Y3.each <- Y3.each[Y3.each$BGC.pred %in% futureSS$MergedBGC,] ###Remove predictions with no overlap and recalculate
+        Y3.each$BGC.prop <- Y3.each$BGC.prop/sum(Y3.each$BGC.prop)
         futureSS <- merge(futureSS, Y3.each[,c("BGC.pred","BGC.prop")], by.x = "MergedBGC", by.y = "BGC.pred", all.x = TRUE)
         
         
@@ -382,11 +385,13 @@ SiteNo.suit <-  foreach(SNL = SiteNo.list, .combine = rbind, .packages = c("doBy
         futureSS$overlaptot<- SSoverlap$alloverlap.sum[match(futureSS$MergedBGC, SSoverlap$MergedBGC )]
         futureSS$SSratio <- futureSS$alloverlap/futureSS$overlaptot
         #summaryBy(SSratio ~ MergedBGC, data=futureSS, FUN=c(sum)) #### for checking that SSratio sums to 100%
-        #summaryBy(SSratio ~ SS_NoSpace, data=futureSS, FUN=c(sum)) #
+        #summaryBy(SSratio ~ SS_NoSpace, data=futureSS, FUN=c(sum)) #Ummm?
+        
         
         ####Calculated the overall site series probability
         futureSS$SSprob <- (futureSS$BGC.prop * futureSS$SSratio)
-        #sum(futureSS$SSprob)
+        sum(futureSS$SSprob)
+        
         futureSS$SSCurrent <- rep(SS,length(futureSS$SSprob))
         futureSS <- futureSS[,-c(4:7)]
         
@@ -394,6 +399,9 @@ SiteNo.suit <-  foreach(SNL = SiteNo.list, .combine = rbind, .packages = c("doBy
         futureSS$SiteNo <- as.character(SNL)
         
         futureSS <- as.data.frame(futureSS)
+        }else{
+          warning("No matching edatopes - some predictions have been removed")
+        }
       }
       
     } #For each Site
@@ -401,9 +409,12 @@ SiteNo.suit <-  foreach(SNL = SiteNo.list, .combine = rbind, .packages = c("doBy
   
 } # for all
 
+
 #################End of FOREACH LOOP###################
 #######################################################
 #####SiteNo.suit now contains projected BGC units as SS_NoSpace######
+SiteNo.suit <- SiteNo.suit[!is.na(SiteNo.suit$SSprob),]
+
 Crosswalk <- read.csv("Crosswalk.csv")
 ###Import Data for stocking Standards####
 StandDat <- read.csv("StockStands_v11.csv")
@@ -540,9 +551,9 @@ allOutput <- foreach(Site = unique(SiteNo.suit$SiteNo), .combine =  combineList,
     Feas$NewSuit <- round(Feas$NewSuit, digits = 0)
     Feas$NewSuit <- ifelse(Feas$NewSuit == 0, 1,
                            ifelse(Feas$NewSuit >= 4, 10, Feas$NewSuit))
-    Feas$Estab.Risk <- ifelse(Feas$FeasEstab >= 0.8, "Low", ##CUTOFFS COULD BE ADJUSTED
-                             ifelse(Feas$FeasEstab >= 0.65, "Moderate",
-                                    ifelse(Feas$FeasEstab >= 0.5, "High","Very High")))
+    Feas$Estab.Risk <- ifelse(Feas$FeasEstab >= 0.8, "Low CC Risk", ##CUTOFFS COULD BE ADJUSTED
+                             ifelse(Feas$FeasEstab >= 0.65, "Moderate CC Risk",
+                                    ifelse(Feas$FeasEstab >= 0.5, "Considerable CC Risk","Very High Risk")))
     Feas$Estab.Risk <- ifelse(Feas$Estab.Risk == "Very High" & Feas$NewSuit > 3.5, "High", Feas$Estab.Risk)
     Feas$Suitability[Feas$Suitability == 5] <- 10
     Feas$SuitDiff <- Feas$Suitability - Feas$NewSuit
@@ -680,315 +691,3 @@ allOutput <- foreach(Site = unique(SiteNo.suit$SiteNo), .combine =  combineList,
 write.csv(allOutput[[2]], "SummaryExample.csv")
 write.csv(allOutput[[1]], "RawDataExample.csv")
 write.csv(allOutput[[3]], "ReferenceGuide.csv")
-
-
-
-
-
-
-
-
-
-
-#===============================================================================
-#OLD CODE
-#         
-#===============================================================================
-temp <- SiteNo.suit
-temp <- temp[temp$SSCurrent == "SBSmc2/01",]
-temp <- temp[temp$SSprob >= 0.01,]
-temp <- temp[,c(6,5,3,4)]
-temp <- merge(temp,S1[,-1], by.x = "SS_NoSpace",by.y = "Unit")
-temp$Spp[temp$Spp == "Sxw"] <- "Sx"
-SIBEC <- read.csv("SIBEC.csv", stringsAsFactors = FALSE)
-SIBEC <- SIBEC[SIBEC$Region == "Prince Rupert",]
-temp <- merge(temp, SIBEC[,c(9,5,7)], by.x = c("SS_NoSpace","Spp"), by.y = c("SS_NoSpace","TreeSpp"), all.x = TRUE)
-
-
-
-treeShape <- function(temp){
-  x <- temp[1,]
-  for(i in 2:5){
-    x <- cbind(x, temp[i,])
-  }
-  return(x)
-}
-
-bifurc <- function(x){ ###Check for bifurcated model in raw data
-  t1 <- x[1] + x[2]
-  cutoff1 <- 0.85 - t1
-  t2 <- x[3] + x[4]
-  cutoff2 <- 0.85 - t2
-  if(max(x) > 0.65 | cutoff1 < 0.2 | cutoff2 < 0.2){
-    return(FALSE)
-  }else if(x[4] >= cutoff1 | x[1] >= cutoff2){
-    return(TRUE)
-  }else{
-    return(FALSE)
-  }
-}
-#=======================================
-#####Create Examples for Allen########
-#=======================================
-
-SiteNo.suit <-  foreach(SNL = SiteNo.list, .combine =rbind) %do% {      ##  for each SiteNo in the data
-  
-  options(warn=2)
-  
-  cat("===========================================","\n")
-  cat(SNL, "\n", "===========================================","\n")
-  
-  SiteFuture.suit <- foreach(i = FuturePeriod.list, .combine = rbind)  %do% {
-    
-    #===============================================================================
-    # Step 15: FOREACH LOOP to build Site series equivalents
-    #          
-    #===============================================================================
-    #Y3.each <- Y3.sub1[Y3.sub1$Mod_UN %in% M,]
-    
-    Y3.each <- Y3.sub1[Y3.sub1$SiteNo %in% SNL ,] ## extracts data for each site
-    Y3.each <- Y3.each[Y3.each$FuturePeriod %in% i,] ##extracts data for each time period
-    Y3.siteno <-as.list(unique (Y3.each$SiteNo))
-    Y3.BGC <- as.list(unique(Y3.each$BGC))
-    Y3.BGC.pred<- unique(Y3.each$BGC.pred)
-    BGCfocalE <- edatopic1[edatopic1$MergedBGC %in% Y3.BGC  , ] ### extracts edatopic space for BGC focal of SiteNo
-    BGCfutureE <- edatopic2[edatopic2$MergedBGC %in% Y3.BGC.pred  , ] #extracts edatopic info only for predicted BGCs
-    ##Y3.SSlist = "SBSmc2/01"
-    Y3.SSlist = as.list(unique(BGCfocalE$SS_NoSpace))
-    
-    
-    FTS2 <-  foreach(SS = Y3.SSlist, .combine =rbind) %do% {      ##  for each site series for a SiteNo BGC
-      
-      ###############################################################
-      
-      options(warn=2)
-      
-      cat("===========================================","\n")
-      
-      cat(SS, "\n", "===========================================","\n")
-      
-      ## rm(nsmatrix, suitmatrix)
-      
-      SSfocal <- BGCfocalE[BGCfocalE$SS_NoSpace %in% SS ,] ###find focal site series cells
-      SSfocallist <- as.list(unique(SSfocal$SS_NoSpace))
-      SSfocalBGClist <- as.list(unique(SSfocal$MergedBGC))
-      SSfocalE <- as.list(unique(SSfocal$Edatopic))
-      ##############################################
-      ##select site series only with some edatopic overlap with SSfocal
-      
-      SSfutureE <- BGCfutureE[BGCfutureE$Edatopic %in% SSfocalE,]
-      futureZones <- unique(SSfutureE$MergedBGC)
-      futureSS.names <- unique(SSfutureE$SS_NoSpace)
-      if(length(SSfutureE$Edatopic) > 0){
-        
-        SSfocal <- BGCfocalE[BGCfocalE$SS_NoSpace %in% SS,]
-        SSfuture <- BGCfutureE[BGCfutureE$SS_NoSpace %in% futureSS.names,]
-        
-        futureSS <- foreach(futSS = futureZones, .combine = rbind) %do% {
-          dat <- SSfuture[SSfuture$MergedBGC == futSS,]
-          if(any(!is.na(SSfocal$Codes)) & any(dat$Codes %in% SSfocal$Codes)){
-            fut <- dat[dat$Edatopic %in% SSfocal$Edatopic,]
-            oldSp <- unique(SSfocal$Codes[!is.na(SSfocal$Codes)])
-            newSp <- unique(fut$SS_NoSpace[match(oldSp, fut$Codes)])
-            dat <- unique(dat[dat$SS_NoSpace == newSp, -c(4:5)])
-            dat$overlap <- 10
-            dat$revoverlap <- 10
-            SNew <- S1[S1$Unit == dat$SS_NoSpace,3:4]
-            SOld <- S1[S1$Unit == SS,3:4]
-            SuitAll <- merge(SOld, SNew, by = "Spp", all = TRUE)
-            SuitAll$Change <- SuitAll$Suitability.x - SuitAll$Suitability.y
-            SuitAll$Change <- ifelse(is.na(SuitAll$Suitability.x) & !is.na(SuitAll$Suitability.y), SuitAll$Suitability.y +10,
-                                     ifelse(is.na(SuitAll$Suitability.y) & !is.na(SuitAll$Suitability.x), -4, SuitAll$Change))
-            SuitAll <- SuitAll[order(SuitAll$Suitability.x),]
-            SuitAll <- SuitAll[,c(1,4)]
-            empty <- matrix(nrow = 4, ncol = 2, data = NA)
-            colnames(empty) <- c("Spp","Change")
-            SuitAll <- rbind(SuitAll,empty)
-            temp <- treeShape(SuitAll)
-            dat <- cbind(dat,temp)
-          }else{
-            dat <- dat[is.na(dat$Codes),]
-            dat <- foreach(x = unique(as.character(dat$SS_NoSpace)), .combine = rbind) %do% {
-              dat1 <- dat[dat$SS_NoSpace == x,]
-              Overlap <- edaOverlap(SSfocal$Edatopic, dat1$Edatopic)
-              Revoverlap <- edaOverlap(dat1$Edatopic, SSfocal$Edatopic)
-              dat1 <- unique(dat1[-c(4:5)])
-              dat1$overlap <- Overlap
-              dat1$revoverlap <- Revoverlap
-              dat1 <- as.data.frame(dat1)
-              SNew <- S1[S1$Unit == x,3:4]
-              SOld <- S1[S1$Unit == SS,3:4]
-              SuitAll <- merge(SOld, SNew, by = "Spp", all = TRUE)
-              SuitAll$Change <- SuitAll$Suitability.x - SuitAll$Suitability.y
-              SuitAll$Change <- ifelse(is.na(SuitAll$Suitability.x) & !is.na(SuitAll$Suitability.y), SuitAll$Suitability.y +10,
-                                       ifelse(is.na(SuitAll$Suitability.y) & !is.na(SuitAll$Suitability.x), -4, SuitAll$Change))
-              SuitAll <- SuitAll[order(SuitAll$Suitability.x),]
-              SuitAll <- SuitAll[,c(1,4)]
-              empty <- matrix(nrow = 4, ncol = 2, data = NA)
-              colnames(empty) <- c("Spp","Change")
-              SuitAll <- rbind(SuitAll,empty)
-              temp <- treeShape(SuitAll)
-              dat1 <- cbind(dat1,temp)
-            }
-          }
-          
-          
-          dat
-          
-        }
-        
-        futureSS$alloverlap <- futureSS$overlap*futureSS$revoverlap
-        
-        ####add BGC probability to FutureSS list
-        m2 <- summaryBy(SiteNo~BGC, data=Y3.each, FUN=c(length))
-        p2 <- summaryBy(SiteNo~BGC + BGC.pred, data=Y3.each,  FUN=c(length))
-        #m <-ddply(Y3, .(BGC), numcolwise(sum))
-        #p <-ddply(Y3, .(BGC, BGC.pred), numcolwise(sum))
-        BGCratio3 <- merge (m2,p2, by.x = "BGC", by.y = "BGC" )
-        BGCratio3$FutureRatio <- BGCratio3$SiteNo.length.y/BGCratio3$SiteNo.length.x
-        summaryBy(FutureRatio ~ BGC, data=BGCratio3, FUN=c(sum)) #### summary to check that equals 1 for each BGC
-        
-        futureSS$BGCratio <- BGCratio3$FutureRatio[match(futureSS$MergedBGC, BGCratio3$BGC.pred)]
-        
-        ####Calculate the SS ratio
-        SSoverlap <- summaryBy(alloverlap~MergedBGC, data=futureSS, id = 'SS_NoSpace', FUN=c(sum))
-        futureSS$overlaptot<- SSoverlap$alloverlap.sum[match(futureSS$MergedBGC, SSoverlap$MergedBGC )]
-        futureSS$SSratio <- futureSS$alloverlap/futureSS$overlaptot
-        summaryBy(SSratio ~ MergedBGC, data=futureSS, FUN=c(sum)) #### for checking that SSratio sums to 100%
-        summaryBy(SSratio ~ SS_NoSpace, data=futureSS, FUN=c(sum)) #
-        
-        
-        ####Calculated the overall site series probability
-        futureSS$SSprob <- (futureSS$BGCratio * futureSS$SSratio)
-        futureSS$SSCurrent <- rep(SS,length(futureSS$SSprob))
-        futureSS <- futureSS[,c(1:5,16:length(futureSS),6:15)]
-        
-        
-        futureSS$FuturePeriod <- as.character(i)  ## add Futureperiod to FTS data outputed by the inner-most foreach loop
-        futureSS$SiteNo <- as.character(SNL)
-        
-        futureSS <- as.data.frame(futureSS)
-      }
-      
-    } #For each Site
-  } #For each year
-  
-} # for all
-
-SiteNo.suit <- SiteNo.suit[,c(22:23, 1:21)]
-forAllen <- SiteNo.suit[,c(2,1,9,13,5:8,11,14:23)]
-write.csv(forAllen, file = "SSforAllenReview.csv")
-
-Y1 <- Y1[-grep("Ensemble", Y1$GCM),]
-Y1 <- Y1[-grep("rcp26", Y1$GCM),]
-Y1 <- Y1[grep("2025", Y1$GCM),]
-
-Y1 <- Y1[order(Y1$Latitude, Y1$Longitude),]
-len <- length(Y1$PPT07)
-Y1$ID1 <- rep(1:(len/90), each = 90)
-Y1 <- Y1[Y1$Latitude >= 53,]
-
-
-modDir <- function(x, direction){#columns 1,2,3,X,Currentsuit
-  curr <- x[5]
-  if(curr == 5 | is.na(curr)){
-    curr <- 4
-  }
-  x[5] <- 0
-  x <- c(0,x)
-  improve <- sum(x[1:curr])
-  same <- x[curr + 1]
-  decline <- sum(x[(curr+2):length(x)])
-  v <- c(improve,same,decline)
-  names(v) <- c("Improve","Same","Decline")
-  out <- paste(round((max(v)[1]*100), digits = 0),"% ",names(v)[v == max(v)[1]], sep = "")
-  return(out[1])
-}
-names(FTS2)
-
-## > names(FTS2)
-##  [1] "BGC"        "Spp"        "Suit"       "Same"       "Imp1"       "Imp2"       "Dec1"       "Dec2"       "A1"        
-## [10] "A2"         "A3"         "Not Suit"   "FSuit"      "Tbase"      "Trajectory"
-
-
-str(SiteNo.suit)
-
-FTS3 <- SiteNo.suit[ ,c('FuturePeriod', 'SiteNo','BGC', 'Spp', 'Suit', 'FSuit', 'Trajectory', 'Same', 'Imp1', 'Imp2', 'Dec1', 'Dec2', 'A1', 'A2', 'A3', 'Not Suit')]
-
-FTS3
-
-FTS3[, ]
-
-str(FTS3)
-
-setnames(FTS3, old = c('BGC','Suit', 'Imp1', 'Imp2', 'Dec1', 'Dec2', 'FSuit' ), new = c('Site Series','CurrentSuit', 'Improve1', 'Improve2', 'Decline1', 'Decline2', 'FutureSuit' ))
-
-str(FTS3)
-
-#FTS3$Trajectory <- as.numeric(FTS3$Trajectory)
-FTS3[, 8:16] <- round(FTS3[, 8:16], digits=2)
-
-SuitforMaps <- FTS3[,3:6]
-write.csv(SuitforMaps, file = "PredSuit_AllMods_2085.csv")
-write.csv(FTS3, file = "FTS3_2085.csv")
-Suit.table <- Suit.table[grep("01|05|06", Suit.table$`Site Series`),]
-
-SiteLocation = c("SiteNo","Latitude", "Longitude", "Elevation")
-FTS.location = unique(Y1[,names(Y1) %in% c(SiteLocation)])
-FTS4 <- merge(FTS.location, FTS3, by="SiteNo")
-write.csv(FTS3, file = "SuitabilityNewMoriceSA.csv")
-
-siteNames <- data.frame("Name" = c("Babine03","Babine05","Babine02","FultonFSR","Granisle","Hannay","Maxan","MoriceNew1","MoriceNew2"),
-                        "SiteNo" = c(1,2,3,4,5,6,7,8,9))
-
-Suit.table <- merge(siteNames, Suit.table, by = "SiteNo")
-#===============================================================================
-# Step 17: write formatted Tree species suitability table to file
-#         
-#===============================================================================
-##Create examples for Bryce
-Suit.table <- FTS3[order(FTS3$SiteNo, FTS3$`Site Series`,FTS3$Spp, FTS3$FuturePeriod),]
-Suit.table <- Suit.table[,c(3,4,1,5,8:16)]
-write.csv(Suit.table, file = "Suitability_9_StudyAreas.csv")
-
-fname <- paste(fplot,"_TreeSuitTraject2",model,".csv",sep= "")
-
-## write.csv(FTS3, file=paste(fplot,"_TreeSuitTraject2",model,".csv",sep=""))
-
-#write.csv(FTS4, file=paste(fplot,"_TreeSuitTraject2",model,".csv",sep=""))   ## Need to output FTS4 rather than FTS3! 
-write.csv(FTS4, file=paste(Tile.pick,"_TreeSuitTraject2",model,".csv",sep=""))   ## Need to output FTS4 rather than FTS3! 
-
-## FTS4 contains Latitude, Longitude and Elevation, 
-## whereas FTS3 does not! 
-
-
-cat("\n\n","formatted Tree species suitability table is written to following file:", "\n\n",fname, "\n\n")
-
-
-################################################################################
-
-qsort <- function(x) {
-  n <- length(x)
-  if (n == 0) {
-    x
-  } else {
-    p <- sample(n, 1)
-    smaller <- foreach(y=x[-p], .combine=c) %:% when(y <= x[p]) %do% y
-    larger  <- foreach(y=x[-p], .combine=c) %:% when(y >  x[p]) %do% y
-    c(qsort(smaller), x[p], qsort(larger))
-  }
-}
-qsort(runif(50))
-
-trees <- window(treering, start = 0)
-(fit <- StructTS(trees, type = "level"))
-plot(trees)
-lines(fitted(fit), col = "green")
-tsdiag(fit)
-
-install.packages("googleway")
-require(googleway)
-lat <- read.csv("AllenSites2.csv")
-test <- google_elevation(lat[,3:4], key = "AIzaSyCWN1azwRFe-p6A-hfBkU_lI62QtD7PRpg", simplify = TRUE)
-lat$elevation <- test[["results"]]$elevation
-write.csv(lat, "AllenSites2.csv")
