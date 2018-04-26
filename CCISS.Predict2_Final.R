@@ -553,8 +553,8 @@ allOutput <- foreach(Site = unique(SiteNo.suit$SiteNo), .combine =  combineList,
                            ifelse(Feas$NewSuit >= 4, 10, Feas$NewSuit))
     Feas$Estab.Risk <- ifelse(Feas$FeasEstab >= 0.8, "Low CC Risk", ##CUTOFFS COULD BE ADJUSTED
                              ifelse(Feas$FeasEstab >= 0.65, "Moderate CC Risk",
-                                    ifelse(Feas$FeasEstab >= 0.5, "Considerable CC Risk","Very High Risk")))
-    Feas$Estab.Risk <- ifelse(Feas$Estab.Risk == "Very High" & Feas$NewSuit > 3.5, "High", Feas$Estab.Risk)
+                                    ifelse(Feas$FeasEstab >= 0.5, "Considerable CC Risk","High Risk")))
+    ###Feas$Estab.Risk <- ifelse(Feas$Estab.Risk == "High Risk" & Feas$NewSuit < 3.5, "Considerable CC Risk", Feas$Estab.Risk) ##Incase we get some weird output where it is suitable but says High Risk
     Feas$Suitability[Feas$Suitability == 5] <- 10
     Feas$SuitDiff <- Feas$Suitability - Feas$NewSuit
     Feas <- merge(Feas, FeasTrajLookup, by = "SuitDiff", all.x = TRUE)
