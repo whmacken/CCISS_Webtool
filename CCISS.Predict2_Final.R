@@ -230,6 +230,7 @@ treesuit="TreeSppSuit_v10.6"
 treesuit2=paste(wd,"/",treesuit,".csv",sep="")
 S1 <- read.csv(treesuit2,stringsAsFactors=F,na.strings=".")
 S1 <- unique(S1)
+S1$Spp <- gsub("Sxw|Se|Sw","Sx",S1$Spp)
 
 #===============================================================================
 # Builds list of all BGCs, Future BGCs, and Site Series
