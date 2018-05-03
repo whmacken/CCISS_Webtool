@@ -1,9 +1,6 @@
-#Hi Ben or whomever ends up working on this code! Assuming you already have the random forest model built,
-#this code will take the new data, predict the subzones, use the edatopic overlap to determine likley site
-#series, and produce summary tables. The first part of the code up to the function and loop section as line 175
-#hasn't really been changed, but almost everything after that has been. For creating the summary statistics,
-#there are some cutoffs/constants that might be changed or could even be adjustable on the web tool. I've 
-#tried to comment these. Please don't hesitate to get in touch if anything doesn't makes sense. Thanks!
+##======================================================================================
+##                       CCISS Tool Prediction+Ruleset Script- May 3, 2018
+##======================================================================================
 
 .libPaths("E:/R packages")
 #.libPaths("F:/R/Packages")
@@ -29,6 +26,14 @@ require(data.table)
 #===============================================================================
 
 rm(list=ls())
+
+###OPTIONAL: Set up to run loops in parallel###
+require(doParallel)
+set.seed(123321)
+coreNum <- as.numeric(detectCores()-1)
+coreNo <- makeCluster(coreNum)
+registerDoParallel(coreNo, cores = coreNum)
+clusterEvalQ(coreNo, .libPaths("E:/R packages"))
 
 ###Function to find the proportion edatopic overlap###
 edaOverlap <- function(dat1, dat2){
@@ -122,7 +127,7 @@ setwd(wd)
 
 ###enter model file name
 fname="BGCv10_2000Pt_Rnd_Normal_1961_1990MSY_RFmodelKiriFinal.Rdata"
-#fname = (file.choose())
+fname = (file.choose())
 load(fname)
 
 #choose data file: ClimateBC output including all variables and all future periods
@@ -208,7 +213,7 @@ Y3.sub$BGC.pred <- gsub(" ", "", Y3.sub$BGC.pred, fixed = TRUE)
 #           
 #===============================================================================
 
-edatopename="EdatopicWithSpecialCurrent"
+edatopename="Edatopic_v10.7"
 edatopename2=paste(wd,"/",edatopename,".csv",sep="")
 E1 <-read.csv(edatopename2,stringsAsFactors=FALSE,na.strings=".")
 
@@ -226,11 +231,10 @@ edatopic2 <- E1[E1$MergedBGC %in% e2,]
 edatopic2$Codes[edatopic2$Codes == ""] <- NA
 
 #################Import and Build Tree species suitability##############
-treesuit="TreeSppSuit_v10.6"
+treesuit="TreeSppSuit_v10.7"
 treesuit2=paste(wd,"/",treesuit,".csv",sep="")
 S1 <- read.csv(treesuit2,stringsAsFactors=F,na.strings=".")
 S1 <- unique(S1)
-S1$Spp <- gsub("Sxw|Se|Sw","Sx",S1$Spp)
 
 #===============================================================================
 # Builds list of all BGCs, Future BGCs, and Site Series
@@ -244,7 +248,7 @@ Y3.sub1 <- Y3.sub1[,c("SiteNo","FuturePeriod","BGC","BGC.pred")]
 Y3.sub1 <- Y3.sub1[order(Y3.sub1$SiteNo, Y3.sub1$FuturePeriod, Y3.sub1$BGC,Y3.sub1$BGC.pred),]
 
 BGCminProp <- 0 ##to exclude BGCs with low prediction rates
-average <- "No"##"Yes" ##
+average <- "Yes"##"Yes" ##
 
 #####Average points (if specified) and remove BGCs with low predictions####
 
@@ -281,24 +285,6 @@ Y3.sub1$SiteNo <- as.character(Y3.sub1$SiteNo)
 SiteNo.list = as.list(unique(Y3.sub1$SiteNo))
 
 gc()
-
-
-
-###OPTIONAL: Set up to run loops in parallel###
-require(doParallel)
-set.seed(123321)
-coreNo <- makeCluster(detectCores() - 1)
-registerDoParallel(coreNo, cores = detectCores() - 1)
-Cores <- as.numeric(detectCores()-1)
-clusterEvalQ(coreNo, .libPaths("E:/R packages"))
-#cl = makePSOCKcluster(6)
-#registerDoParallel(cl)
-#clusterEvalQ(cl, .libPaths("E:/R packages"))
-
-#=======================================================================
-#             LOAD FUNCTIONS USED IN LOOP AND FOR SUMMARY STATS-- NEW!!!
-#=======================================================================
-
 
 #=======================================================================================  
 #####Nested foreach loops to caclulate site series - now matches special SS together#####
@@ -385,7 +371,7 @@ SiteNo.suit <-  foreach(SNL = SiteNo.list, .combine = rbind, .packages = c("doBy
         SSoverlap <- summaryBy(alloverlap~MergedBGC, data=futureSS, id = 'SS_NoSpace', FUN=c(sum))
         futureSS$overlaptot<- SSoverlap$alloverlap.sum[match(futureSS$MergedBGC, SSoverlap$MergedBGC )]
         futureSS$SSratio <- futureSS$alloverlap/futureSS$overlaptot
-        #summaryBy(SSratio ~ MergedBGC, data=futureSS, FUN=c(sum)) #### for checking that SSratio sums to 100%
+        ##summaryBy(SSratio ~ MergedBGC, data=futureSS, FUN=c(sum)) #### for checking that SSratio sums to 100%
         #summaryBy(SSratio ~ SS_NoSpace, data=futureSS, FUN=c(sum)) #Ummm?
         
         
@@ -415,6 +401,7 @@ SiteNo.suit <-  foreach(SNL = SiteNo.list, .combine = rbind, .packages = c("doBy
 #######################################################
 #####SiteNo.suit now contains projected BGC units as SS_NoSpace######
 SiteNo.suit <- SiteNo.suit[!is.na(SiteNo.suit$SSprob),]
+SiteNo.suit <- SiteNo.suit[SiteNo.suit$SSCurrent %in% S1$Unit,] ##Remove units currently not it reference guide
 
 Crosswalk <- read.csv("Crosswalk.csv")
 ###Import Data for stocking Standards####
@@ -444,7 +431,6 @@ StockingNames <- c("Unit","Standard","SSName","Primary","Preferred","Secondary",
 
 ##Need to select region for creating reference guide####
 region <- "Pr George"
-
 
 #===================================================================================
 #####Foreach loops to calculate summary statistics within each current BGC unit#####
@@ -505,7 +491,7 @@ allOutput <- foreach(Site = unique(SiteNo.suit$SiteNo), .combine =  combineList,
     
     ####new data frame with proportion votes for each suit class##
     numVotes <- cast(comb, Spp + FuturePeriod + SSCurrent ~ Suitability, value = "SSprob", fun.aggregate = sum) ###votes for each suitability
-    ##numVotes$Sum <- rowSums(numVotes[,c(4:7)]) ##check votes sum to 1 (ignoring rounding errors)
+    ###numVotes$Sum <- rowSums(numVotes[,c(4:7)]) ##check votes sum to 1 (ignoring rounding errors)
     
     ####Remove all dinosaurs###
     numVotes <- numVotes[numVotes$Spp != "T_Rex",]
@@ -556,6 +542,7 @@ allOutput <- foreach(Site = unique(SiteNo.suit$SiteNo), .combine =  combineList,
                              ifelse(Feas$FeasEstab >= 0.65, "Moderate CC Risk",
                                     ifelse(Feas$FeasEstab >= 0.5, "Considerable CC Risk","High Risk")))
     ###Feas$Estab.Risk <- ifelse(Feas$Estab.Risk == "High Risk" & Feas$NewSuit < 3.5, "Considerable CC Risk", Feas$Estab.Risk) ##Incase we get some weird output where it is suitable but says High Risk
+    
     Feas$Suitability[Feas$Suitability == 5] <- 10
     Feas$SuitDiff <- Feas$Suitability - Feas$NewSuit
     Feas <- merge(Feas, FeasTrajLookup, by = "SuitDiff", all.x = TRUE)
@@ -692,3 +679,20 @@ allOutput <- foreach(Site = unique(SiteNo.suit$SiteNo), .combine =  combineList,
 write.csv(allOutput[[2]], "SummaryExample.csv")
 write.csv(allOutput[[1]], "RawDataExample.csv")
 write.csv(allOutput[[3]], "ReferenceGuide.csv")
+
+#####For checking and fixing edatopic and suitability tables#### (Hailey please ignore)
+library(tidyr)
+eda <- read.csv("EdatopicWithSpecialCurrent_New.csv", stringsAsFactors = FALSE)
+eda <- separate(eda, "SS_NoSpace",into = c("Subzone","SS"), sep = "/", remove = FALSE)
+mismatch <- eda[eda$MergedBGC != eda$Subzone,]
+eda <- eda[,c(1,4,3,6:8),]
+colnames(eda)[2] <- "MergedBGC"
+write.csv(eda, "Edatopic_v10.7.csv", row.names = FALSE)
+
+suit <- read.csv("TreeSppSuit_v10.7.csv", stringsAsFactors = FALSE)
+suit <- suit[suit$Species != "NS",]
+write.csv(suit, "TreeSppSuit_v10.7.csv", row.names = FALSE)
+
+t <- file.choose()
+lrm <- read.csv(t, stringsAsFactors = FALSE)
+suit <- suit[!(suit$Unit %in% lrm$SS_NoSpace & suit$Spp == "Lw"),]
