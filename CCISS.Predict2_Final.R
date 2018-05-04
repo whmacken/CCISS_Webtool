@@ -522,9 +522,9 @@ allOutput <- foreach(Site = unique(SiteNo.suit$SiteNo), .combine =  combineList,
     
     ##THE BELOW CUTOFFS COULD BE ADJUSTED
     rawDat$PeriodTraj <- ifelse(rawDat$SuitDiff > 1.5, "Strongly Improving", 
-                                ifelse(rawDat$SuitDiff > 0.2, "Improving",
-                                       ifelse(rawDat$SuitDiff > -0.2, "No Change",
-                                              ifelse(rawDat$SuitDiff <= -0.2, "Declining", "Strongly Declining"))))
+                                ifelse(rawDat$SuitDiff > 0.5, "Improving",
+                                       ifelse(rawDat$SuitDiff > -0.5, "No Change",
+                                              ifelse(rawDat$SuitDiff <= -0.5, "Declining", "Strongly Declining"))))
     rawDat$Risk <- ifelse(rawDat$X >= 0.5, "Very High", ##CUTOFFS COULD BE ADJUSTED
                             ifelse(rawDat$X >= 0.35, "High",
                                    ifelse(rawDat$X >= 0.2, "Moderate","Low")))
