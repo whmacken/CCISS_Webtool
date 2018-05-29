@@ -126,8 +126,8 @@ wd=tk_choose.dir()
 setwd(wd)
 
 ###enter model file name
-fname="BGCv10_2000Pt_Rnd_Normal_1961_1990MSY_RFmodelKiriFinal.Rdata"
-fname = (file.choose())
+fname="BECv10_AB_USAZones2018_RFmodel.Rdata"
+#fname = (file.choose())
 load(fname)
 
 #choose data file: ClimateBC output including all variables and all future periods
@@ -248,7 +248,7 @@ Y3.sub1 <- Y3.sub1[,c("SiteNo","FuturePeriod","BGC","BGC.pred")]
 Y3.sub1 <- Y3.sub1[order(Y3.sub1$SiteNo, Y3.sub1$FuturePeriod, Y3.sub1$BGC,Y3.sub1$BGC.pred),]
 
 BGCminProp <- 0 ##to exclude BGCs with low prediction rates
-average <- "Yes"##"Yes" ##
+average <- "No"##"Yes" ##
 
 #####Average points (if specified) and remove BGCs with low predictions####
 
@@ -430,7 +430,7 @@ StockingNames <- c("Unit","Standard","SSName","Primary","Preferred","Secondary",
 "StockingTarget","StockingMINpa","StockingMINp","StockingDelay","AssessmentEarliest","AssessmentLatest","H1","H2","H3","H4","H5")
 
 ##Need to select region for creating reference guide####
-region <- "Pr George"
+region <- "Vancouver"
 
 #===================================================================================
 #####Foreach loops to calculate summary statistics within each current BGC unit#####
@@ -522,9 +522,9 @@ allOutput <- foreach(Site = unique(SiteNo.suit$SiteNo), .combine =  combineList,
     
     ##THE BELOW CUTOFFS COULD BE ADJUSTED
     rawDat$PeriodTraj <- ifelse(rawDat$SuitDiff > 1.5, "Strongly Improving", 
-                                ifelse(rawDat$SuitDiff > 0.2, "Improving",
-                                       ifelse(rawDat$SuitDiff > -0.2, "No Change",
-                                              ifelse(rawDat$SuitDiff <= -0.2, "Declining", "Strongly Declining"))))
+                                ifelse(rawDat$SuitDiff > 0.5, "Improving",
+                                       ifelse(rawDat$SuitDiff > -0.5, "No Change",
+                                              ifelse(rawDat$SuitDiff <= -0.5, "Declining", "Strongly Declining"))))
     rawDat$Risk <- ifelse(rawDat$X >= 0.5, "Very High", ##CUTOFFS COULD BE ADJUSTED
                             ifelse(rawDat$X >= 0.35, "High",
                                    ifelse(rawDat$X >= 0.2, "Moderate","Low")))
@@ -549,6 +549,7 @@ allOutput <- foreach(Site = unique(SiteNo.suit$SiteNo), .combine =  combineList,
     Feas$Flag <- as.character(Feas$Flag)
     Feas$Flag <- ifelse(Feas$Suitability == 10 & Feas$NewSuit == 10, "Not In",
                         ifelse(Feas$NewSuit == 10, "Removing", Feas$Flag))
+    Feas <- Feas[order(Feas$Spp),]
     
     ####2055 data used for summary statistics####
     dat55 <- numVotes[numVotes$FuturePeriod == 2055, c(1,4:8)]
@@ -557,6 +558,7 @@ allOutput <- foreach(Site = unique(SiteNo.suit$SiteNo), .combine =  combineList,
     dat55$Decline <- apply(dat55[,2:6],1,modDir2,direction = "Decline")
     dat55$Bifurc <- apply(dat55[,7:9],1,bifurcTrend)###test for bifurcation based on percent improve/decline
     dat55$NewSuit <- apply(dat55[,2:6],1,FUN = newSuitnoCurrent)
+    dat55 <- dat55[order(dat55$Spp),]
     dat55$Suit25 <- apply(Feas[,c(5:8)],1,newSuitnoCurrent) ###Get 2025 suitability
     dat55$NewSuit[dat55$NewSuit > 3.5] <- 4
     dat55$Suit25[dat55$Suit25 > 3.5] <- 4
