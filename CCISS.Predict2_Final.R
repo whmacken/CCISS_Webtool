@@ -51,7 +51,7 @@ bifurcTrend <- function(x){ ##percent improve, stable, and same - bifurcated mod
 }
 
 newSuit <- function(x){ ##Calculate new suitability accounting for current suitability
-  suitLookup <- data.frame(SuitCurr = c(1,2,3,5), Value = c(-0.5, -0.3, 0.3, 0.6)) ##VALUES FOR CURRENT SUIT COULD BE ADJUSTED
+  suitLookup <- data.frame(SuitCurr = c(1,2,3,5), Value = c(-0.4, -0.2, 0.2, 0.6)) ##VALUES FOR CURRENT SUIT COULD BE ADJUSTED
   val <- suitLookup$Value[match(x[5], suitLookup$SuitCurr)]
   return(val+(1*x[1]+2*x[2]+3*x[3]+5*x[4]))
 }
@@ -247,7 +247,7 @@ Y3.sub1$BGC.pred <- gsub("[[:space:]]","",Y3.sub1$BGC.pred)
 Y3.sub1 <- Y3.sub1[,c("SiteNo","FuturePeriod","BGC","BGC.pred")]
 Y3.sub1 <- Y3.sub1[order(Y3.sub1$SiteNo, Y3.sub1$FuturePeriod, Y3.sub1$BGC,Y3.sub1$BGC.pred),]
 
-BGCminProp <- 0 ##to exclude BGCs with low prediction rates
+BGCminProp <- 0.05 ##to exclude BGCs with low prediction rates
 average <- "No"##"Yes" ##
 
 #####Average points (if specified) and remove BGCs with low predictions####
@@ -430,7 +430,7 @@ StockingNames <- c("Unit","Standard","SSName","Primary","Preferred","Secondary",
 "StockingTarget","StockingMINpa","StockingMINp","StockingDelay","AssessmentEarliest","AssessmentLatest","H1","H2","H3","H4","H5")
 
 ##Need to select region for creating reference guide####
-region <- "Vancouver"
+region <- "Cariboo"
 
 #===================================================================================
 #####Foreach loops to calculate summary statistics within each current BGC unit#####
@@ -535,6 +535,30 @@ allOutput <- foreach(Site = unique(SiteNo.suit$SiteNo), .combine =  combineList,
     Feas <- numVotes[numVotes$FuturePeriod == 2025,]
     Feas$FeasEstab <- Feas$`1`+Feas$`2`+(Feas$`3`*0.75) ###CONSTANT HERE COULD BE ADJUSTED
     Feas$NewSuit <- apply(Feas[,c(4:8)],1,newSuit)
+    Feas <- Feas[order(Feas$Spp),]
+    
+    ####2055 data used for summary statistics####
+    dat55 <- numVotes[numVotes$FuturePeriod == 2055, c(1,4:8)]
+    dat55$Improve <- apply(dat55[,2:6],1,modDir2,direction = "Improve")
+    dat55$Stable <- apply(dat55[,2:6],1,modDir2,direction = "Stable")
+    dat55$Decline <- apply(dat55[,2:6],1,modDir2,direction = "Decline")
+    dat55$Bifurc <- apply(dat55[,7:9],1,bifurcTrend)###test for bifurcation based on percent improve/decline
+    dat55$NewSuit <- apply(dat55[,2:6],1,FUN = newSuitnoCurrent)
+    dat55 <- dat55[order(dat55$Spp),]
+    dat55 <- cbind(dat55, Suit25 = Feas$NewSuit)
+    dat55$NewSuit[dat55$NewSuit > 3.5] <- 4
+    dat55$Suit25[dat55$Suit25 > 3.5] <- 4
+    dat55$SuitDiff <- dat55$Suit25 - dat55$NewSuit
+    dat55$OverallTraj <- ifelse(dat55$SuitDiff >= 2, "Strongly Improving",
+                                ifelse(dat55$SuitDiff >= 0.5, "Improving",
+                                       ifelse(dat55$SuitDiff >=-0.5, "No Change",
+                                              ifelse(dat55$SuitDiff >= -2, "Declining", "Strongly Declining"))))
+    dat55$OverallTraj <- ifelse(dat55$Bifurc, "Bifurcating", dat55$OverallTraj)
+    dat55$ModAgree <- apply(dat55[,7:9],1,FUN = modAgree)
+    
+    dat55 <- dat55[order(dat55$Spp),]
+    ######################################
+    
     Feas$NewSuit <- round(Feas$NewSuit, digits = 0)
     Feas$NewSuit <- ifelse(Feas$NewSuit == 0, 1,
                            ifelse(Feas$NewSuit >= 4, 10, Feas$NewSuit))
@@ -549,28 +573,6 @@ allOutput <- foreach(Site = unique(SiteNo.suit$SiteNo), .combine =  combineList,
     Feas$Flag <- as.character(Feas$Flag)
     Feas$Flag <- ifelse(Feas$Suitability == 10 & Feas$NewSuit == 10, "Not In",
                         ifelse(Feas$NewSuit == 10, "Removing", Feas$Flag))
-    Feas <- Feas[order(Feas$Spp),]
-    
-    ####2055 data used for summary statistics####
-    dat55 <- numVotes[numVotes$FuturePeriod == 2055, c(1,4:8)]
-    dat55$Improve <- apply(dat55[,2:6],1,modDir2,direction = "Improve")
-    dat55$Stable <- apply(dat55[,2:6],1,modDir2,direction = "Stable")
-    dat55$Decline <- apply(dat55[,2:6],1,modDir2,direction = "Decline")
-    dat55$Bifurc <- apply(dat55[,7:9],1,bifurcTrend)###test for bifurcation based on percent improve/decline
-    dat55$NewSuit <- apply(dat55[,2:6],1,FUN = newSuitnoCurrent)
-    dat55 <- dat55[order(dat55$Spp),]
-    dat55$Suit25 <- apply(Feas[,c(5:8)],1,newSuitnoCurrent) ###Get 2025 suitability
-    dat55$NewSuit[dat55$NewSuit > 3.5] <- 4
-    dat55$Suit25[dat55$Suit25 > 3.5] <- 4
-    dat55$SuitDiff <- dat55$Suit25 - dat55$NewSuit
-    dat55$OverallTraj <- ifelse(dat55$SuitDiff >= 2, "Strongly Improving",
-                                ifelse(dat55$SuitDiff >= 0.5, "Improving",
-                                       ifelse(dat55$SuitDiff >=-0.5, "No Change",
-                                              ifelse(dat55$SuitDiff >= -2, "Declining", "Strongly Declining"))))
-    dat55$OverallTraj <- ifelse(dat55$Bifurc, "Bifurcating", dat55$OverallTraj)
-    dat55$ModAgree <- apply(dat55[,7:9],1,FUN = modAgree)
-                                
-    dat55 <- dat55[order(dat55$Spp),]
     Feas <- Feas[order(Feas$Spp),]
     
     ###create summary output
@@ -678,8 +680,8 @@ allOutput <- foreach(Site = unique(SiteNo.suit$SiteNo), .combine =  combineList,
   }###end of loop
 
 
-write.csv(allOutput[[2]], "SummaryExample.csv")
-write.csv(allOutput[[1]], "RawDataExample.csv")
+write.csv(allOutput[[2]], "SummaryMHmm1_US_v2.csv", row.names = FALSE)
+write.csv(allOutput[[1]], "FirePort.csv", row.names = FALSE)
 write.csv(allOutput[[3]], "ReferenceGuide.csv")
 
 #####For checking and fixing edatopic and suitability tables#### (Hailey please ignore)
