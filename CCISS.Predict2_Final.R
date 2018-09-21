@@ -126,7 +126,7 @@ wd=tk_choose.dir()
 setwd(wd)
 
 ###enter model file name
-fname="BECv10_AB_USAZones2018_RFmodel.Rdata"
+fname="RFMod_All_BGCv11.Rdata"
 #fname = (file.choose())
 load(fname)
 
@@ -178,16 +178,15 @@ Y1.sub$BGC <- gsub(" ", "", Y1.sub$BGC, fixed = TRUE)
 Y1.sub$BGC <- factor(Y1.sub$BGC, levels=unique(Y1.sub$BGC))
 
 ##Predict future subzones######
-Y1.sub$BGC.pred <- predict(BGCmodel, Y1.sub[,-c(1:2)]) 
-gc()
+Y1.sub$BGC.pred <- predict(BGCmodel, Y1.sub[,-c(1:3)]) 
 
 Y1.sub$PlotNo <- attr(Y1.sub, "row.names")
-S1 <- subset(Y1, select=c("Model", "SiteNo", "Latitude", "Longitude", "Elevation"))
+S1 <- subset(Y1, select=c("Model", "SiteNo"))
 S2 <- subset(Y1.sub, select=c("BGC", "BGC.pred"))   
 
 Y2.sub <- cbind.data.frame(S1, S2)
 
-Y2.sub <- Y2.sub[,c("Model", "SiteNo", "BGC", "BGC.pred", "Latitude", "Longitude", "Elevation")]
+Y2.sub <- Y2.sub[,c("Model", "SiteNo", "BGC", "BGC.pred")]
 
 Y2.sub$BGC.pred <- gsub(" ", "", Y2.sub$BGC.pred, fixed = TRUE)
 
@@ -247,31 +246,39 @@ Y3.sub1$BGC.pred <- gsub("[[:space:]]","",Y3.sub1$BGC.pred)
 Y3.sub1 <- Y3.sub1[,c("SiteNo","FuturePeriod","BGC","BGC.pred")]
 Y3.sub1 <- Y3.sub1[order(Y3.sub1$SiteNo, Y3.sub1$FuturePeriod, Y3.sub1$BGC,Y3.sub1$BGC.pred),]
 
-BGCminProp <- 0.05 ##to exclude BGCs with low prediction rates
+BGCminProp <- 0 ##to exclude BGCs with low prediction rates
 average <- "No"##"Yes" ##
 
 #####Average points (if specified) and remove BGCs with low predictions####
 
 if(average == "Yes"){
   Y3.sub1$BGC.len <- ave(Y3.sub1$BGC, Y3.sub1$FuturePeriod, Y3.sub1$BGC, FUN = length)
-  Y3.sub1$Pred.len <- ave(Y3.sub1$BGC, Y3.sub1$FuturePeriod, Y3.sub1$BGC, Y3.sub1$BGC.pred, FUN = length)
+  Pred.len <- aggregate(SiteNo ~ FuturePeriod + BGC + BGC.pred, Y3.sub1, FUN = length)
+  colnames(Pred.len)[4] <- "Pred.len"
+  Y3.sub1 <- merge(Y3.sub1, Pred.len, by = c("FuturePeriod","BGC","BGC.pred"), all = TRUE)
   Y3.sub1$BGC.len <- as.numeric(Y3.sub1$BGC.len); Y3.sub1$Pred.len <- as.numeric(Y3.sub1$Pred.len)
   Y3.sub1$BGC.prop <- Y3.sub1$Pred.len/Y3.sub1$BGC.len
   Y3.sub1 <- Y3.sub1[Y3.sub1$BGC.prop > BGCminProp,] ###Change this to a proportion to exclude BGCs with low prediction
   Y3.sub1 <- within(Y3.sub1, SiteNo <- match(BGC, unique(BGC)))
 }else{
   Y3.sub1$BGC.len <- ave(Y3.sub1$BGC, Y3.sub1$SiteNo, Y3.sub1$FuturePeriod, Y3.sub1$BGC, FUN = length)
-  Y3.sub1$Pred.len <- ave(Y3.sub1$BGC, Y3.sub1$SiteNo, Y3.sub1$FuturePeriod, Y3.sub1$BGC, Y3.sub1$BGC.pred, FUN = length)
+  Pred.len <- aggregate(BGC.len ~ SiteNo + FuturePeriod + BGC + BGC.pred, Y3.sub1, FUN = length)
+  colnames(Pred.len)[5] <- "Pred.len"
+  Y3.sub1 <- merge(Y3.sub1, Pred.len, by = c("SiteNo","FuturePeriod","BGC","BGC.pred"), all = TRUE)
   Y3.sub1$BGC.len <- as.numeric(Y3.sub1$BGC.len); Y3.sub1$Pred.len <- as.numeric(Y3.sub1$Pred.len)
   Y3.sub1$BGC.prop <- Y3.sub1$Pred.len/Y3.sub1$BGC.len
   Y3.sub1 <- Y3.sub1[Y3.sub1$BGC.prop > BGCminProp,] ###Change this to a proportion to exclude BGCs with low prediction
 }
 
-Y3.sub1 <- within(Y3.sub1,
-                  BGC.len <- ave(BGC, SiteNo, FuturePeriod, BGC, FUN = length),
-                  Pred.len <- ave(BGC, SiteNo, FuturePeriod, BGC, BGC.pred, FUN = length),
-                  BGC.len <- as.numeric(BGC.len), Pred.len <- as.numeric(Pred.len),
-                  BGC.prop <- Pred.len/BGC.len)
+###have to recalculate proportions if some predictions have been removed
+if(BGCminProp > 0){
+  Y3.sub1$BGC.len <- ave(Y3.sub1$BGC, Y3.sub1$SiteNo, Y3.sub1$FuturePeriod, Y3.sub1$BGC, FUN = length)
+  Pred.len <- aggregate(BGC.len ~ SiteNo + FuturePeriod + BGC + BGC.pred, Y3.sub1, FUN = length)
+  colnames(Pred.len)[5] <- "Pred.len"
+  Y3.sub1 <- merge(Y3.sub1, Pred.len, by = c("SiteNo","FuturePeriod","BGC","BGC.pred"), all = TRUE)
+  Y3.sub1$BGC.len <- as.numeric(Y3.sub1$BGC.len); Y3.sub1$Pred.len <- as.numeric(Y3.sub1$Pred.len)
+  Y3.sub1$BGC.prop <- Y3.sub1$Pred.len/Y3.sub1$BGC.len
+}
 
 Y3.sub1 <- Y3.sub1[order(Y3.sub1$SiteNo,Y3.sub1$FuturePeriod,Y3.sub1$BGC,Y3.sub1$BGC.pred),]
 BGC.pred.out <- unique(Y3.sub1[,c(1:4,7)])
@@ -491,7 +498,7 @@ allOutput <- foreach(Site = unique(SiteNo.suit$SiteNo), .combine =  combineList,
     
     ####new data frame with proportion votes for each suit class##
     numVotes <- cast(comb, Spp + FuturePeriod + SSCurrent ~ Suitability, value = "SSprob", fun.aggregate = sum) ###votes for each suitability
-    ###numVotes$Sum <- rowSums(numVotes[,c(4:7)]) ##check votes sum to 1 (ignoring rounding errors)
+    ##numVotes$Sum <- rowSums(numVotes[,c(4:7)]) ##check votes sum to 1 (ignoring rounding errors)
     
     ####Remove all dinosaurs###
     numVotes <- numVotes[numVotes$Spp != "T_Rex",]
@@ -683,6 +690,7 @@ allOutput <- foreach(Site = unique(SiteNo.suit$SiteNo), .combine =  combineList,
 write.csv(allOutput[[2]], "SummaryMHmm1_US_v2.csv", row.names = FALSE)
 write.csv(allOutput[[1]], "FirePort.csv", row.names = FALSE)
 write.csv(allOutput[[3]], "ReferenceGuide.csv")
+
 
 #####For checking and fixing edatopic and suitability tables#### (Hailey please ignore)
 library(tidyr)
