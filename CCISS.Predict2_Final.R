@@ -2,7 +2,7 @@
 ##                       CCISS Tool Prediction+Ruleset Script- May 3, 2018
 ##======================================================================================
 
-.libPaths("E:/R packages")
+.libPaths("E:/R packages351")
 #.libPaths("F:/R/Packages")
 require (RGtk2)
 require(plyr)
@@ -19,7 +19,7 @@ require(foreach)
 require(dplyr)
 require(reshape2)
 require(reshape)
-library(doParallel)
+require(doParallel)
 require(data.table)
 #===============================================================================
 # Clear environment and add in previous rF model 
@@ -33,7 +33,7 @@ set.seed(123321)
 coreNum <- as.numeric(detectCores()-1)
 coreNo <- makeCluster(coreNum)
 registerDoParallel(coreNo, cores = coreNum)
-clusterEvalQ(coreNo, .libPaths("E:/R packages"))
+clusterEvalQ(coreNo, .libPaths("E:/R packages351"))
 
 ###Function to find the proportion edatopic overlap###
 edaOverlap <- function(dat1, dat2){
@@ -230,7 +230,7 @@ edatopic2 <- E1[E1$MergedBGC %in% e2,]
 edatopic2$Codes[edatopic2$Codes == ""] <- NA
 
 #################Import and Build Tree species suitability##############
-treesuit="TreeSppSuit_v10.7"
+treesuit="TreeSppSuit_v10.10"
 treesuit2=paste(wd,"/",treesuit,".csv",sep="")
 S1 <- read.csv(treesuit2,stringsAsFactors=F,na.strings=".")
 S1 <- unique(S1)
@@ -409,7 +409,7 @@ SiteNo.suit <-  foreach(SNL = SiteNo.list, .combine = rbind, .packages = c("doBy
 #####SiteNo.suit now contains projected BGC units as SS_NoSpace######
 SiteNo.suit <- SiteNo.suit[!is.na(SiteNo.suit$SSprob),]
 SiteNo.suit <- SiteNo.suit[SiteNo.suit$SSCurrent %in% S1$Unit,] ##Remove units currently not it reference guide
-
+write.csv(SiteNo.suit, "BulkleyTSA_SSpredicted.csv", row.names = FALSE)
 Crosswalk <- read.csv("Crosswalk.csv")
 ###Import Data for stocking Standards####
 StandDat <- read.csv("StockStands_v11.csv")
