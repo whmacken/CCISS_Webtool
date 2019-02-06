@@ -126,7 +126,7 @@ wd=tk_choose.dir()
 setwd(wd)
 
 ###enter model file name
-fname="RFMod_All_BGCv11.Rdata"
+fname="BGCv11_AB_USA_500pts_27VAR_Subzone_RFmodel.Rdata"
 #fname = (file.choose())
 load(fname)
 
@@ -247,7 +247,7 @@ Y3.sub1 <- Y3.sub1[,c("SiteNo","FuturePeriod","BGC","BGC.pred")]
 Y3.sub1 <- Y3.sub1[order(Y3.sub1$SiteNo, Y3.sub1$FuturePeriod, Y3.sub1$BGC,Y3.sub1$BGC.pred),]
 
 BGCminProp <- 0 ##to exclude BGCs with low prediction rates
-average <- "No"##"Yes" ##
+average <- "No"## "Yes"##
 
 #####Average points (if specified) and remove BGCs with low predictions####
 
@@ -409,7 +409,7 @@ SiteNo.suit <-  foreach(SNL = SiteNo.list, .combine = rbind, .packages = c("doBy
 #####SiteNo.suit now contains projected BGC units as SS_NoSpace######
 SiteNo.suit <- SiteNo.suit[!is.na(SiteNo.suit$SSprob),]
 SiteNo.suit <- SiteNo.suit[SiteNo.suit$SSCurrent %in% S1$Unit,] ##Remove units currently not it reference guide
-write.csv(SiteNo.suit, "BulkleyTSA_SSpredicted.csv", row.names = FALSE)
+write.csv(SiteNo.suit, "FraserTSA_SSpredicted.csv", row.names = FALSE) ##this file used by Portfolio
 Crosswalk <- read.csv("Crosswalk.csv")
 ###Import Data for stocking Standards####
 StandDat <- read.csv("StockStands_v11.csv")
